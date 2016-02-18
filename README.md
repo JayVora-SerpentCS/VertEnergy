@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JayVora-SerpentCS/VertEnergy.svg?branch=master)](https://travis-ci.org/JayVora-SerpentCS/VertEnergy)
+[![Build Status](https://travis-ci.org/JayVora-SerpentCS/VertEnergy.svg?branch=8.0)](https://travis-ci.org/JayVora-SerpentCS/VertEnergy)
 
 
 # VertEnergy
