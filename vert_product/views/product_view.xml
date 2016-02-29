@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="product_template_extended_vert" model="ir.ui.view">
+            <field name="name">product.template.extended.vert</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Inventory']/group/group[2][@name='weight']" position="after">
+                    <group string="Dimensions" attrs="{'invisible':[('type','=','service')]}">
+                        <field name="length"/>
+                        <field name="width"/>
+                        <field name="height"/>
+                    </group>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Procurements']/separator[@string='Suppliers']" position="before">
+                    <group>
+                        <field name="coo"/>
+                        <field name="cth"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
