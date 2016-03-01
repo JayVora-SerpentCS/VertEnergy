@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-from opeerp import models, fields
+from openerp import models, fields
 
 
 class product_template(models.Model):
