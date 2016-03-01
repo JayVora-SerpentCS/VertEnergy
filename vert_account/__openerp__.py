@@ -22,7 +22,7 @@
 {
     'name': 'Vert Account Invoice Reference',
     'version': '1.0',
-    'category': 'accounting',
+    'category': 'Accounting & Finance',
     'description': """
         This module is used to keep invoice reference
      """,

@@ -29,9 +29,9 @@
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
     'depends': ['product'],
-    'data': ['views/product_view.xml'
-    ],
+    'data': ['views/product_view.xml'],
     'installable': True,
     'auto_install': False,
 }
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
