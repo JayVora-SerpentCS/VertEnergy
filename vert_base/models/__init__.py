@@ -19,23 +19,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Vert Base',
-    'version': '1.0',
-    'category': 'Base',
-    'description': """
-        This module is used for custom header footer in report
-     """,
-    'author': 'Serpent Consulting Services Pvt. Ltd.',
-    'website': 'http://www.serpentcs.com',
-    'depends': ['report'],
-    'data': [
-        'data/paperformat_data.xml',
-        'views/custom_report.xml',
-        'views/vert_base_view.xml',
-    ],
-    'installable': True,
-    'auto_install': False,
-}
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+from . import vert_base

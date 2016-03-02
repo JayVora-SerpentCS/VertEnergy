@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Res Partner -->
+        <record id="vert_res_partner_extend" model="ir.ui.view">
+            <field name="name">ver.res_partner.extend</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']/group" position="after">
+                    <group>
+                        <field name="cust_acc_ref" attrs="{'invisible':[('customer','=',False)]}"/>
+                        <field name="supp_acc_ref" attrs="{'invisible':[('supplier','=',False)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Purchase Order -->
+        <record id="vert_purchase_order_extend" model="ir.ui.view">
+            <field name="name">vert.purchase.order.extend</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/group" position="after">
+                    <group>
+                        <field name="pur_supp_acc_ref"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Sales Order -->
+        <record id="vert_sales_order_extend" model="ir.ui.view">
+            <field name="name">vert.sales.order.extend</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/group" position="after">
+                    <group>
+                        <field name="sale_cust_acc_ref"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Account Invoice(Customer Invoice) -->
+        <record id="vert_customer_invoice_form_extend" model="ir.ui.view">
+            <field name="name">vert.customer.invoice.form.extend</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/group" position="after">
+                    <group>
+                        <field name="inv_cust_acc_ref"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Account Invoice(Supplier Invoice) -->
+        <record id="vert_supplier_invoice_form_extend" model="ir.ui.view">
+            <field name="name">vert.supplier.invoice.form.extend</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/group" position="after">
+                    <group>
+                        <field name="inv_supp_acc_ref"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

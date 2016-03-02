@@ -19,23 +19,31 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Vert Base',
-    'version': '1.0',
-    'category': 'Base',
-    'description': """
-        This module is used for custom header footer in report
-     """,
-    'author': 'Serpent Consulting Services Pvt. Ltd.',
-    'website': 'http://www.serpentcs.com',
-    'depends': ['report'],
-    'data': [
-        'data/paperformat_data.xml',
-        'views/custom_report.xml',
-        'views/vert_base_view.xml',
-    ],
-    'installable': True,
-    'auto_install': False,
-}
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+from openerp import models, fields
+
+
+class res_partner(models.Model):
+    _inherit = 'res.partner'
+
+    cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
+    supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
+
+
+class sale_order(models.Model):
+    _inherit = 'sale.order'
+
+    sale_cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
+
+
+class purchase_order(models.Model):
+    _inherit = 'purchase.order'
+
+    pur_supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
+
+
+class account_invoice(models.Model):
+    _inherit = 'account.invoice'
+
+    inv_cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
+    inv_supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
