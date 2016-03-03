@@ -7,11 +7,12 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']/group" position="after">
-                    <group>
-                        <field name="cust_acc_ref" attrs="{'invisible':[('customer','=',False)]}"/>
-                        <field name="supp_acc_ref" attrs="{'invisible':[('supplier','=',False)]}"/>
-                    </group>
+                <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']/group/group[3]/field[@name='ref']" position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']/group/group[3]/field[@name='lang']" position="before">
+                    <field name="cust_acc_ref" attrs="{'invisible':[('customer','=',False)]}"/>
+                    <field name="supp_acc_ref" attrs="{'invisible':[('supplier','=',False)]}"/>
                 </xpath>
             </field>
         </record>
