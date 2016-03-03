@@ -14,6 +14,31 @@
                     <field name="cust_acc_ref" attrs="{'invisible':[('customer','=',False)]}"/>
                     <field name="supp_acc_ref" attrs="{'invisible':[('supplier','=',False)]}"/>
                 </xpath>
+                <xpath expr="/form/sheet/group/group[1]/field[@name='website']" position="after">
+                    <field name="company_reg"/>
+                    <field name="vat_no"/>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Contacts']/field[@name='child_ids']" position="attributes">
+                    <attribute name='context'>
+                        {'default_parent_id': active_id,
+                        'default_street': street,
+                        'default_street2': street2,
+                        'default_city': city,
+                        'default_state_id': state_id,
+                        'default_zip': zip,
+                        'default_country_id': country_id,
+                        'default_supplier': supplier,
+                        'default_customer': customer,
+                        'default_use_parent_address': True,
+                        'default_vat_no':vat_no,
+                        'default_company_reg':company_reg
+                        }
+                    </attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Contacts']/field[@name='child_ids']/form[@string='Contact']/sheet/group/field[@name='mobile']" position="after">
+                    <field name="company_reg"/>
+                    <field name="vat_no"/>
+                </xpath>
             </field>
         </record>
 

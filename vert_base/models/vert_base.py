@@ -28,6 +28,8 @@ class res_partner(models.Model):
 
     cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
     supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
+    vat_no = fields.Char(string="Vat No.")
+    company_reg = fields.Char(string="Company Reg")
 
 
 class sale_order(models.Model):
