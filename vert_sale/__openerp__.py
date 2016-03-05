@@ -38,7 +38,7 @@
         'data/forward_exchange_contract_data.xml',
         'data/sale_deposits_data.xml',
         'data/balance_payable_data.xml',
-         'data/payment_term_data.xml',
+        'data/payment_term_data.xml',
     ],
     'installable': True,
     'auto_install': False,
