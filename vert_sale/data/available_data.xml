@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="avail_prior_sale" model="sale.availability">
+            <field name="name">Ex Stock Subject to Prior Sale</field>
+        </record>
+        <record id="avail_1week" model="sale.availability">
+            <field name="name">1 Week Ex Factory</field>
+        </record>
+        <record id="avail_6week" model="sale.availability">
+            <field name="name">4-6 Week Ex FactoryS</field>
+        </record>
+        <record id="avail_12week" model="sale.availability">
+            <field name="name">10-12 Week Ex Factory</field>
+        </record>
+    </data>
+</openerp>

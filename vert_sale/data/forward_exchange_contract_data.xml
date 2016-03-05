@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="forward_exchange)contract1" model="sale.forward.exchange.contract">
+            <field name="name">Not Applicable</field>
+        </record>
+        <record id="forward_exchange_contract2" model="sale.forward.exchange.contract">
+            <field name="name">For the avoidance of any doubt the option of a F.E.C.(Forward Exchange Contract) facility is available to mitigate any currency risk and is strictly  available upon written request. The forward points quoted shall be in accordance with rates as received from First Rand Bank Limited on the day of order placement and is subject to a 10% deposit of the full contract value at the maturity date.</field>
+        </record>
+    </data>
+</openerp>

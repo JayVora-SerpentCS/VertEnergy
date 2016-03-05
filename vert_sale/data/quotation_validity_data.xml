@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="quotation_validity1" model="sale.quotation.validity">
+            <field name="name">7 Days</field>
+        </record>
+        <record id="quotation_validity2" model="sale.quotation.validity">
+            <field name="name">14 Days</field>
+        </record>
+        <record id="quotation_validity3" model="sale.quotation.validity">
+            <field name="name">30 Days</field>
+        </record>
+    </data>
+</openerp>

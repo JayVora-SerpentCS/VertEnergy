@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="balance_payable1" model="sale.balance.payable">
+            <field name="name">N/A</field>
+        </record>
+        <record id="balance_payable2" model="sale.balance.payable">
+            <field name="name">Balance Payable on Presentation of B.O.L.</field>
+        </record>
+        <record id="balance_payable3" model="sale.balance.payable">
+            <field name="name">Balance Payable 30 Days from Presentation of B.O.L.</field>
+        </record>
+         <record id="balance_payable4" model="sale.balance.payable">
+            <field name="name">Balance Payable on Prior to Receipt of Goods</field>
+        </record>
+    </data>
+</openerp>

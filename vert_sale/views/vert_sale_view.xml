@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Remove incoterm from 'Other Information' tab -->
+        <record id="sale_stock.view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sales_person']" position="before">
+                     <group name="logistics">
+                         <field name="picking_policy" required="True"/>
+                         <field name="order_policy"/>
+                     </group>
+                </xpath>
+           </field>
+        </record>
+        
+        <!-- Incoterm show in Orderline tab -->
+       <record id="sale_stock.view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Order Lines']/field[@name='note']" position="before">
+                     <group>
+                         <group>
+                             <field name="incoterm" string='Incoterms 2010' groups="base.group_user"/>
+                             <field name="inco_name"/>
+                             <field name="availibility"/>'
+                             <field name="ship_dur"/>
+                             <field name="quot_validity"/>
+                         </group>
+                         <group>
+                             <field name="ex_rate"/>
+                             <field name="ex_contract"/>
+                             <field name="payment_term"/>
+                             <field name="deposit"/>
+                             <field name="bal_pay"/>
+                         </group>
+                     </group>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Other Information']/group/group[@name='sale_pay']/field[@name='payment_term']" position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </xpath>
+           </field>
+        </record>
+    </data>
+</openerp>
