@@ -39,6 +39,7 @@
         'data/sale_deposits_data.xml',
         'data/balance_payable_data.xml',
         'data/payment_term_data.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
     'auto_install': False,

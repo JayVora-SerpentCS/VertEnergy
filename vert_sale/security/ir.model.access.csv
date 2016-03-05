@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_availability,access_sale_availability,model_sale_availability,,1,0,0,0
+access_sale_shipping_duration,access_sale_shipping_duration,model_sale_shipping_duration,,1,0,0,0
+access_sale_rate_exchange,access_sale_rate_exchange,model_sale_rate_exchange,,1,0,0,0
+access_sale_quotation_validity,access_sale_quotation_validity,model_sale_quotation_validity,,1,0,0,0
+access_sale_forward_exchange_contract,access_sale_forward_exchange_contract,model_sale_forward_exchange_contract,,1,0,0,0
+access_sale_deposits,access_sale_deposits,model_sale_deposits,,1,0,0,0
+access_sale_balance_payable,access_sale_balance_payable,model_sale_balance_payable,,1,0,0,0
