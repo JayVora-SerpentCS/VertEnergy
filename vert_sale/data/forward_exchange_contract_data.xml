@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="forward_exchange)contract1" model="sale.forward.exchange.contract">
+        <record id="forward_exchange_contract1" model="sale.forward.exchange.contract">
             <field name="name">Not Applicable</field>
         </record>
         <record id="forward_exchange_contract2" model="sale.forward.exchange.contract">
