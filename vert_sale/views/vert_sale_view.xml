@@ -17,7 +17,7 @@
         </record>
         
         <!-- Incoterm show in Orderline tab -->
-       <record id="sale_stock.view_order_form_inherit" model="ir.ui.view">
+       <record id="vert_view_order_form_extend" model="ir.ui.view">
             <field name="name">sale.order.form.sale.stock</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
