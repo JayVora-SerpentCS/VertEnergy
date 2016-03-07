@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Advance Payment (Deposit)  -->
+        <record id="account_payment_term_deposit" model="account.payment.term">
+            <field name="name">Advance Payment(Deposit)</field>
+            <field name="note">Advance Payment(Deposit)</field>
+        </record>
+
+        <record id="account_payment_term_line_deposit" model="account.payment.term.line">
+            <field name="value">procent</field>
+            <field eval="0" name="days"/>
+            <field eval="0" name="days2"/>
+            <field eval="account_payment_term_deposit" name="payment_id"/>
+        </record>
+        
+        <!-- Advance Payment (Full Amount) -->
+        <record id="account_payment_term_advance_payment" model="account.payment.term">
+            <field name="name">Advance Payment(Full Amount)</field>
+            <field name="note">Advance Payment(Full Amount)</field>
+        </record>
+
+        <record id="account_payment_term_line_advance_payment" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="0" name="days"/>
+            <field eval="0" name="days2"/>
+            <field eval="account_payment_term_advance_payment" name="payment_id"/>
+        </record>
+        
+        <!-- C.O.D. (Cash of Delivery ) -->
+        <record id="account_payment_term_cod" model="account.payment.term">
+            <field name="name">C.O.D.(Cash of Delivery )</field>
+            <field name="note">C.O.D.(Cash of Delivery )</field>
+        </record>
+
+        <record id="account_payment_term_line_cod" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="0" name="days"/>
+            <field eval="0" name="days2"/>
+            <field ref="account_payment_term_cod" name="payment_id"/>
+        </record>
+
+        <!-- 30 Days Net ( Date of Invoice) -->
+        <record id="account_payment_term_net_30days" model="account.payment.term">
+            <field name="name">30 Days Net(Date of Invoice)</field>
+            <field name="note">30 Days Net(Date of Invoice)</field>
+        </record>
+
+        <record id="account_payment_term_line_net_30days" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="30" name="days"/>
+            <field eval="0" name="days2"/>
+            <field ref="account_payment_term_net_30days" name="payment_id"/>
+        </record>
+        
+        <!--30 Days ( Date of Statement) -->
+        <record id="account_payment_term_date_of_statement" model="account.payment.term">
+            <field name="name">30 Days(Date of Statement)</field>
+            <field name="note">30 Days(Date of Statement)</field>
+        </record>
+
+        <record id="account_payment_term_line_date_of_statement" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="30" name="days"/>
+            <field eval="0" name="days2"/>
+            <field ref="account_payment_term_date_of_statement" name="payment_id"/>
+        </record>
+        
+        <!--45 Days Nett ( Date of Invoice) -->
+        <record id="account_payment_term_45_days_net" model="account.payment.term">
+            <field name="name">45 Days Net(Date of Invoice)</field>
+            <field name="note">45 Days Net(Date of Invoice)</field>
+        </record>
+
+        <record id="account_payment_term_line_45days_net" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="45" name="days"/>
+            <field eval="0" name="days2"/>
+            <field eval="account_payment_term_45_days_net" name="payment_id"/>
+        </record>
+        
+        <!--45 Days ( Date of Statement) -->
+        <record id="account_payment_term_45_days_date_of_statement" model="account.payment.term">
+            <field name="name">45 Days(Date of Statement)</field>
+            <field name="note">45 Days(Date of Statement)</field>
+        </record>
+
+        <record id="account_payment_term_line_45days_date_of_statement" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="45" name="days"/>
+            <field eval="0" name="days2"/>
+            <field eval="account_payment_term_45_days_date_of_statement" name="payment_id"/>
+        </record>
+    </data>
+</openerp>
