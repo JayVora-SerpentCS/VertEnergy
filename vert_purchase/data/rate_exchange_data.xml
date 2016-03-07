@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="purchase_rate_exchange1" model="purchase.rate.exchange">
+            <field name="name">Not Applicable</field>
+        </record>
+        <record id="purchase_rate_exchange2" model="purchase.rate.exchange">
+            <field name="name">US Dollar Based Quotations Final Invoice to be presented in ZAR This quotation is subject to the 1 US$ not exceeding...ZAR Any variance will be adjusted accordingly and for your account.</field>
+        </record>
+        <record id="purchase_rate_exchange3" model="purchase.rate.exchange">
+            <field name="name">Great Britain Pound Sterling Based Quotations Final Invoice to be presented in ZAR This quotation is subject to the 1 GBP not exceeding...ZAR Any variance will be adjusted accordingly and for your account.</field>
+        </record>
+        <record id="purchase_rate_exchange4" model="purchase.rate.exchange">
+            <field name="name">Euro Based Quotations Final Invoice to be presented in ZAR This quotation is subject to the 1 Euro not exceeding...ZAR Any variance will be adjusted accordingly and for your account.</field>
+        </record>
+    </data>
+</openerp>

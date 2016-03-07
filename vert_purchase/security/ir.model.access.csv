@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_availability,access.purchase.availability,model_purchase_availability,,1,0,0,0
+access_purchase_shipping_duration,access.purchase.shipping.duration,model_purchase_shipping_duration,,1,0,0,0
+access_purchase_rate_exchange,access.purchase.rate.exchange,model_purchase_rate_exchange,,1,0,0,0
+access_purchase_quotation_validity,access.purchase.quotation.validity,model_purchase_quotation_validity,,1,0,0,0
+access_purchase_forward_exchange_contract,access.purchase.forward.exchange.contract,model_purchase_forward_exchange_contract,,1,0,0,0
+access_purchase_deposits,access.purchase.deposits,model_purchase_deposits,,1,0,0,0
+access_purchase_balance_payable,access.purchase.balance.payable,model_purchase_balance_payable,,1,0,0,0

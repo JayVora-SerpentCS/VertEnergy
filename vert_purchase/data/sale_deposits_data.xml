@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="purchase_deposits1" model="purchase.deposits">
+            <field name="name">N/A</field>
+        </record>
+        <record id="purchase_deposits2" model="purchase.deposits">
+            <field name="name">30% on Order Placement</field>
+        </record>
+        <record id="purchase_deposits3" model="purchase.deposits">
+            <field name="name">50% on Order Placement</field>
+        </record>
+         <record id="purchase_deposits4" model="purchase.deposits">
+            <field name="name">100% on Order Placement</field>
+        </record>
+    </data>
+</openerp>

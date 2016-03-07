@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="purchase_shipping_duration1" model="purchase.shipping.duration">
+            <field name="name">In Dispatch ( Ready for Collection)</field>
+        </record>
+        <record id="purchase_shipping_duration2" model="purchase.shipping.duration">
+            <field name="name">Overnight</field>
+        </record>
+        <record id="purchase_shipping_duration3" model="purchase.shipping.duration">
+            <field name="name">3-5 Days (Airfreight)</field>
+        </record>
+        <record id="purchase_shipping_duration4" model="purchase.shipping.duration">
+            <field name="name">17-10 Days (Airfreight)</field>
+        </record>
+        <record id="purchase_shipping_duration5" model="purchase.shipping.duration">
+            <field name="name">2-3 Weeks</field>
+        </record>
+        <record id="purchase_shipping_duration6" model="purchase.shipping.duration">
+            <field name="name">4-6 Weeks</field>
+        </record>
+    </data>
+</openerp>
