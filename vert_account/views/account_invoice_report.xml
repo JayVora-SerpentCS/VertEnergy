@@ -15,6 +15,16 @@
                     <span t-field="o.internal_number"/>
                 </h2>
             </xpath>
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="inside">
+                <div class="col-xs-4" t-if="o.type in('out_invoice','out_refund') and o.partner_id.cust_acc_ref">
+                    <strong>Customer Acc. Ref. No.:</strong>
+                    <p t-field="o.partner_id.cust_acc_ref"/>
+                </div>
+                <div class="col-xs-4" t-if="o.type in('in_invoice', 'in_refund') and o.partner_id.supp_acc_ref">
+                    <strong>Supplier Acc. Ref. No.:</strong>
+                    <p t-field="o.partner_id.supp_acc_ref"/>
+                </div>
+            </xpath>
         </template>
     </data>
 </openerp>

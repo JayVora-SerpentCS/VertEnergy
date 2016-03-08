@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="vert_sale_report_extend" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='page']/div[@id='informations']" position="inside">
+                <div class="col-xs-4" t-if="o.partner_id.cust_acc_ref">
+                    <strong>Customer Acc. Ref. No.:</strong>
+                    <p t-field="o.partner_id.cust_acc_ref"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

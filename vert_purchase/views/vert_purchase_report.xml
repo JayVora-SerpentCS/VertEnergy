@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="vert_purchasequotation_report_extend" inherit_id="purchase.report_purchasequotation_document">
+            <xpath expr="//div[@class='page']/h2" position="after">
+                <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
+                    <strong>Supplier Acc. Ref. No.:</strong>
+                    <p t-field="o.partner_id.supp_acc_ref"/>
+                </div>
+            </xpath>
+        </template>
+        <template id="vert_purchaseorder_report_extend" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="inside">
+                <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
+                    <strong>Supplier Acc. Ref. No.:</strong>
+                    <p t-field="o.partner_id.supp_acc_ref"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>
