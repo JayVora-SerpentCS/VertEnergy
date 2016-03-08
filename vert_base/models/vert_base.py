@@ -30,22 +30,3 @@ class res_partner(models.Model):
     supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
     vat_no = fields.Char(string="Vat No.")
     company_reg = fields.Char(string="Company Reg")
-
-
-class sale_order(models.Model):
-    _inherit = 'sale.order'
-
-    sale_cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
-
-
-class purchase_order(models.Model):
-    _inherit = 'purchase.order'
-
-    pur_supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
-
-
-class account_invoice(models.Model):
-    _inherit = 'account.invoice'
-
-    inv_cust_acc_ref = fields.Char(string='Customer Acc. Ref. No.')
-    inv_supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
