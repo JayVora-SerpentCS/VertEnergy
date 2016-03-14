@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="vert_crm_case_claims_form_view_extend" model="ir.ui.view">
+            <field name="name">vert.crm.case.claims.form.view.extend</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/group/notebook/page[@string='Claim Description']//group/field[@name='ref']" position="replace">
+                </xpath>
+                <xpath expr="/form/sheet/group/notebook/page[@string='Claim Description']/separator[@string='Claim/Action Description']" position="before">
+                    <group>
+                         <separator colspan="2" string="Reference"/>
+                         <group>
+                             <field name="ref1"/>
+                             <field name="ref2"/>
+                             <field name="ref3"/>
+                         </group>
+                         <group>
+                             <field name="ref4"/>
+                             <field name="ref5"/>
+                             <field name="ref6"/>
+                         </group>
+                    </group>
+                    <group>
+                        <separator colspan="2" string="Inspection Report"/>
+                        <group>
+                            <field name="rpt_ref"/>
+                            <field name="ins_date"/>
+                        </group>
+                        <group>
+                            <field name="inspected_by"/>
+                            <field name="approved_by"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,126 @@
+<openerp>
+    <data>
+        <template id="crm_claim_rpt">
+             <style type ="text/css">
+                table, td, tr {
+                    border: none !important;
+                }
+             </style>
+             <t t-call="report.html_container">
+                 <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                       <div class="page">
+                           <h2 class='text-center'><strong>Claim Details</strong></h2>
+                           <b>Claim Subject:  </b><span t-field="o.name"/>
+                           <div class="row mt32 mb32">
+                                <div class="col-xs-3">
+                                   <b>Claim Date:</b>
+                                   <p t-field="o.date"/>
+                               </div>
+                               <div class="col-xs-3">
+                                   <b>Responsible:</b>
+                                   <p t-field="o.user_id.name"/>
+                               </div>
+                                <div class="col-xs-3">
+                                   <b>Sales Team:</b>
+                                   <p t-field="o.section_id.name"/>
+                               </div>
+                               <div class="col-xs-3">
+                                       <b>Deadline:</b>
+                                       <p t-field="o.date_deadline"/>
+                               </div>
+                           </div>
+                           <div class="col-xs-12">
+                               <div class="col-xs-6 pull-left">
+                                   <table class="table table-responsive">
+                                       <caption style="font-weight:bold; text-decoration: underline;">Claim Reporter</caption><tr><td></td></tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Claim Date</td>
+                                           <td><span t-field="o.date" /></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Responsible</td>
+                                           <td><span t-field="o.user_id.name"/></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Sales Team</td>
+                                           <td><span t-field="o.section_id.name"/></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Deadline</td>
+                                           <td><span t-field="o.date_deadline"/></td>
+                                       </tr>
+                                   </table>
+                               </div>
+                               <!--Define References -->
+                               <div class="col-xs-6 pull-right">
+                                   <table class="table table-responsive">
+                                       <caption style="font-weight:bold; text-decoration: underline;">Reference</caption><tr><td></td></tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Partner</td>
+                                           <td><span t-field="o.ref1.name" /></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Product</td>
+                                           <td><span t-field="o.ref2.name"/></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;">Invoice</td>
+                                           <td><span t-if="o.ref3.type == 'out_invoice' and (o.ref3.state == 'open' or o.ref3.state == 'paid')">Invoice : </span>
+                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'proforma2'">PRO-FORMA : </span>
+                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'draft'">Draft Invoice : </span>
+                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'cancel'">Cancelled Invoice : </span>
+                                               <span t-if="o.ref3.type == 'out_refund'">Refund : </span>
+                                               <span t-if="o.ref3.type == 'in_refund'">Supplier Refund : </span>
+                                               <span t-if="o.ref3.type == 'in_invoice'">Supplier Invoice : </span>
+                                               <span t-field="o.ref3.internal_number"/>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;"> Sales Order</td>
+                                           <td><span t-field="o.ref4.name"/></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;"> Serial Numbers</td>
+                                           <td><span t-field="o.ref5.name"/></td>
+                                       </tr>
+                                       <tr>
+                                           <td style="font-weight:bold;"> Purchase Order</td>
+                                           <td><span t-field="o.ref6.name"/></td>
+                                       </tr>
+                                   </table>
+                               </div>
+                           </div>
+                           <!-- Inspection Report   -->
+                           <h2 class='text-left'><strong>Inspection Report</strong></h2>
+                           <div class="row mt32 mb32">
+                               <div class="col-xs-3">
+                                   <b>Report Ref.:</b>
+                                   <p t-field="o.rpt_ref"/>
+                               </div>
+                               <div class="col-xs-3">
+                                   <b>Inspection Date :</b>
+                                   <p t-field="o.ins_date"/>
+                               </div>
+                               <div class="col-xs-3">
+                                   <b>Inspected by :</b>
+                                   <p t-field="o.inspected_by"/>
+                               </div>
+                               <div class="col-xs-3">
+                                   <b>Approved by :</b>
+                                   <p t-field="o.approved_by"/>
+                               </div>
+                           </div>
+                           <!-- End Inspection -->
+                           
+                           <h2 class='text-left'><strong>Claim/Action Description</strong></h2>
+                           <div class="row mt32 mb32">
+                               <p t-field="o.description" />
+                           </div>
+                       </div>
+                     </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
