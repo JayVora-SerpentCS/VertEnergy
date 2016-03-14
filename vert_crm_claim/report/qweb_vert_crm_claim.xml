@@ -11,9 +11,28 @@
                     <t t-call="report.external_layout">
                        <div class="page">
                            <h2 class='text-center'><strong>Claim Details</strong></h2>
-                           <b>Claim Subject:  </b><span t-field="o.name"/>
+                           <div>
+                               <table class="table table-responsive">
+	                               <tr>
+	                                   <td style="font-weight:bold;">Claim Subject</td>
+	                                   <td><p t-field="o.name"/></td>
+	                               </tr>
+	                               <tr>
+                                       <td style="font-weight:bold;">Claim Category</td>
+                                       <td><span t-field="o.categ_id.name"/></td>
+                                   </tr>
+	                               <tr>
+                                       <td style="font-weight:bold;">Company</td>
+                                       <td><span t-field="o.company_id.name"/></td>
+                                   </tr>
+                                   <tr>
+                                       <td style="font-weight:bold;">Trouble Responsible</td>
+                                       <td><span t-field="o.user_fault"/></td>
+                                   </tr>
+                               </table>
+                           </div>
                            <div class="row mt32 mb32">
-                                <div class="col-xs-3">
+                               <div class="col-xs-3">
                                    <b>Claim Date:</b>
                                    <p t-field="o.date"/>
                                </div>
@@ -21,13 +40,13 @@
                                    <b>Responsible:</b>
                                    <p t-field="o.user_id.name"/>
                                </div>
-                                <div class="col-xs-3">
+                               <div class="col-xs-3">
                                    <b>Sales Team:</b>
                                    <p t-field="o.section_id.name"/>
                                </div>
                                <div class="col-xs-3">
-                                       <b>Deadline:</b>
-                                       <p t-field="o.date_deadline"/>
+	                               <b>Deadline:</b>
+	                               <p t-field="o.date_deadline"/>
                                </div>
                            </div>
                            <div class="col-xs-12">
@@ -35,20 +54,16 @@
                                    <table class="table table-responsive">
                                        <caption style="font-weight:bold; text-decoration: underline;">Claim Reporter</caption><tr><td></td></tr>
                                        <tr>
-                                           <td style="font-weight:bold;">Claim Date</td>
-                                           <td><span t-field="o.date" /></td>
+                                           <td style="font-weight:bold;">Partner</td>
+                                           <td><span t-field="o.partner_id.name" /></td>
                                        </tr>
                                        <tr>
-                                           <td style="font-weight:bold;">Responsible</td>
-                                           <td><span t-field="o.user_id.name"/></td>
+                                           <td style="font-weight:bold;">Phone</td>
+                                           <td><span t-field="o.partner_phone"/></td>
                                        </tr>
                                        <tr>
-                                           <td style="font-weight:bold;">Sales Team</td>
-                                           <td><span t-field="o.section_id.name"/></td>
-                                       </tr>
-                                       <tr>
-                                           <td style="font-weight:bold;">Deadline</td>
-                                           <td><span t-field="o.date_deadline"/></td>
+                                           <td style="font-weight:bold;">Email</td>
+                                           <td><span t-field="o.email_from"/></td>
                                        </tr>
                                    </table>
                                </div>

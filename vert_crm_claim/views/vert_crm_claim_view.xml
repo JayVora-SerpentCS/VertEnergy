@@ -6,6 +6,9 @@
             <field name="model">crm.claim</field>
             <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
             <field name="arch" type="xml">
+                <xpath expr="/form/sheet[@string='Claims']/group/field[@name='name']" position="before">
+                    <field name="company_id"/>
+                </xpath>
                 <xpath expr="/form/sheet/group/notebook/page[@string='Claim Description']//group/field[@name='ref']" position="replace">
                 </xpath>
                 <xpath expr="/form/sheet/group/notebook/page[@string='Claim Description']/separator[@string='Claim/Action Description']" position="before">
