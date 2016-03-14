@@ -28,7 +28,7 @@
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['purchase'],
+    'depends': ['purchase','report'],
     'data': [
         'views/vert_purchase_view.xml',
         'data/available_data.xml',
@@ -40,6 +40,7 @@
         'data/balance_payable_data.xml',
         'security/ir.model.access.csv',
         'views/vert_purchase_report.xml',
+        'data/paperformat_purchase_report.xml'
     ],
     'installable': True,
     'auto_install': False,

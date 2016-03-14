@@ -2,18 +2,101 @@
 <openerp>
     <data>
         <template id="vert_purchasequotation_report_extend" inherit_id="purchase.report_purchasequotation_document">
-            <xpath expr="//div[@class='page']/h2" position="after">
-                <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
-                    <strong>Supplier Acc. Ref. No.:</strong>
-                    <p t-field="o.partner_id.supp_acc_ref"/>
+            <xpath expr="//div[@class='page']/p[@t-field='o.notes']" position="before">
+                <div class="row mt32 mb32">
+                    <div class="col-xs-3" t-if="o.partner_id.supp_acc_ref">
+                        <strong>Supplier Ref. No:</strong>
+                        <p t-field="o.partner_id.supp_acc_ref"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Incoterms 2010:</strong>
+                        <p t-field="o.incoterm_id"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Incoterms Place:</strong>
+                        <p t-field="o.inco_name"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Availability:</strong>
+                        <p t-field="o.availibility"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Shipping Duration:</strong>
+                        <p t-field="o.ship_dur"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Quotation Validity:</strong>
+                        <p  t-field="o.quot_validity"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Payment Term:</strong>
+                        <p  t-field="o.payment_term_id"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Deposits:</strong>
+                        <p t-field="o.deposit"/>
+                    </div>
+                    <div class="col-xs-10">
+                        <strong>Balance Payble:</strong>
+                        <p t-field="o.bal_pay"/>
+                    </div>
+                    <div style="page-break-after:auto"></div>
+                	<div class = "col-xs-12">
+	                	<strong>Rate of Exchange:</strong>
+	                	<p align = "justify" t-field = "o.ex_rate"/>
+	                	<strong>Forward Exchange Contract:</strong>
+	                	<p align = "justify" t-field = "o.ex_contract"/>
+                	</div>
                 </div>
             </xpath>
         </template>
         <template id="vert_purchaseorder_report_extend" inherit_id="purchase.report_purchaseorder_document">
-            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="inside">
-                <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
-                    <strong>Supplier Acc. Ref. No.:</strong>
-                    <p t-field="o.partner_id.supp_acc_ref"/>
+            <xpath expr="//div[@class='page']/p[@t-field='o.notes']" position="after">
+                <br/><br/>
+                <div class="row mt32 mb32">
+                    <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
+                        <strong>Supplier Ref. No:</strong>
+                        <p t-field="o.partner_id.supp_acc_ref"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Incoterms 2010:</strong>
+                        <p t-field="o.incoterm_id"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Incoterms Place:</strong>
+                        <p t-field="o.inco_name"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Availability:</strong>
+                        <p t-field="o.availibility"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Shipping Duration:</strong>
+                        <p t-field="o.ship_dur"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Quotation Validity:</strong>
+                        <p  t-field="o.quot_validity"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Payment Term:</strong>
+                        <p  t-field="o.payment_term_id"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Deposits:</strong>
+                        <p t-field="o.deposit"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>Balance Payble:</strong>
+                        <p t-field="o.bal_pay"/>
+                    </div>
+                    <div style="page-break-after:auto"></div>
+                	<div class = "col-xs-12">
+	                	<strong>Rate of Exchange:</strong>
+	                	<p align = "justify" t-field = "o.ex_rate"/>
+	                	<strong>Forward Exchange Contract:</strong>
+	                	<p align = "justify" t-field = "o.ex_contract"/>
+                	</div>
                 </div>
             </xpath>
         </template>

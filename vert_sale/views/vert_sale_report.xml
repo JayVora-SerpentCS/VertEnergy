@@ -2,10 +2,48 @@
 <openerp>
     <data>
         <template id="vert_sale_report_extend" inherit_id="sale.report_saleorder_document">
-            <xpath expr="//div[@class='page']/div[@id='informations']" position="inside">
-                <div class="col-xs-4" t-if="o.partner_id.cust_acc_ref">
-                    <strong>Customer Acc. Ref. No.:</strong>
-                    <p t-field="o.partner_id.cust_acc_ref"/>
+            <xpath expr="//div[@class='page']/p[@t-if='o.payment_term.note']" position="after">
+                <br/><br/>
+                <div class="row mt32 mb32">
+                    <div class="col-xs-3" t-if="o.partner_id.cust_acc_ref" style = "text-align:left">
+                        <strong>Customer Ref. No.:</strong>
+                        <p t-field="o.partner_id.cust_acc_ref"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Incoterms 2010:</strong>
+                        <p t-field="o.incoterm"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Incoterms Place:</strong>
+                        <p t-field="o.inco_name"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Availability:</strong>
+                        <p t-field="o.availibility"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Shipping Duration:</strong>
+                        <p t-field="o.ship_dur"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Quotation Validity:</strong>
+                        <p  t-field="o.quot_validity"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Deposits:</strong>
+                        <p t-field="o.deposit"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Balance Payble:</strong>
+                        <p t-field="o.bal_pay"/>
+                    </div>
+                    <div style="page-break-after:auto"></div>
+                    <div class = "col-xs-12">
+                        <strong>Rate of Exchange:</strong>
+                        <p align = "justify" t-field = "o.ex_rate"/>
+                        <strong>Forward Exchange Contract:</strong>
+                        <p align = "justify" t-field = "o.ex_contract"/>
+                    </div>
                 </div>
             </xpath>
         </template>
