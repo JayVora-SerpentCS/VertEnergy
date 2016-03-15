@@ -41,12 +41,12 @@
                         <p t-field="o.bal_pay"/>
                     </div>
                     <div style="page-break-after:auto"></div>
-                	<div class = "col-xs-12">
-	                	<strong>Rate of Exchange:</strong>
-	                	<p align = "justify" t-field = "o.ex_rate"/>
-	                	<strong>Forward Exchange Contract:</strong>
-	                	<p align = "justify" t-field = "o.ex_contract"/>
-                	</div>
+                    <div class = "col-xs-12">
+                        <strong>Rate of Exchange:</strong>
+                        <p align = "justify" t-field = "o.ex_rate"/>
+                        <strong>Forward Exchange Contract:</strong>
+                        <p align = "justify" t-field = "o.ex_contract"/>
+                    </div>
                 </div>
             </xpath>
         </template>
@@ -90,13 +90,12 @@
                         <strong>Balance Payble:</strong>
                         <p t-field="o.bal_pay"/>
                     </div>
-                    <div style="page-break-after:auto"></div>
-                	<div class = "col-xs-12">
-	                	<strong>Rate of Exchange:</strong>
-	                	<p align = "justify" t-field = "o.ex_rate"/>
-	                	<strong>Forward Exchange Contract:</strong>
-	                	<p align = "justify" t-field = "o.ex_contract"/>
-                	</div>
+                     <div class = "col-xs-12">
+                        <strong>Rate of Exchange:</strong>
+                        <p align = "justify" t-field = "o.ex_rate"/><br/><br/><br/>
+                        <strong>Forward Exchange Contract:</strong>
+                        <p align = "justify" t-field = "o.ex_contract"/>
+                    </div>
                 </div>
             </xpath>
         </template>

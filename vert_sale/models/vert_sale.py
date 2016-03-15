@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields
 
 
 class sale_availability(models.Model):
@@ -86,19 +86,3 @@ class sale_order(models.Model):
                                   string='Forward Exchange Contract')
     deposit = fields.Many2one('sale.deposits', string='Deposits')
     bal_pay = fields.Many2one('sale.balance.payable', string='Balance Payable')
-
-
-class sale_order_line(models.Model):
-    _inherit = 'sale.order.line'
-    _description = 'Sales Order Line'
-    
-    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
-    
-    @api.v7
-    def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
-        res = super(sale_order_line,self)._prepare_order_line_invoice_line(cr, uid, line, account_id=account_id, context=context)
-        print "ressssssssss",res
-        print self
-        res.update({'serial_no':line.serial_no.id})
-        return res
-        

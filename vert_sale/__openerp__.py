@@ -28,7 +28,7 @@
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['sale_stock','report'],
+    'depends': ['sale_stock', 'report'],
     'data': [
         'views/vert_sale_view.xml',
         'data/available_data.xml',
@@ -39,8 +39,8 @@
         'data/sale_deposits_data.xml',
         'data/balance_payable_data.xml',
         'security/ir.model.access.csv',
+        'data/paperformat_sale_report.xml',
         'views/vert_sale_report.xml',
-        'data/paperformat_sale_report.xml'
     ],
     'installable': True,
     'auto_install': False,
