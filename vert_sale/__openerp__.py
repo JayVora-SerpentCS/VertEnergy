@@ -39,7 +39,6 @@
         'data/sale_deposits_data.xml',
         'data/balance_payable_data.xml',
         'security/ir.model.access.csv',
-        'data/paperformat_sale_report.xml',
         'views/vert_sale_report.xml',
     ],
     'installable': True,
