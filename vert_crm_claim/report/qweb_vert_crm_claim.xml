@@ -73,35 +73,58 @@
                                        <caption style="font-weight:bold; text-decoration: underline;">Reference</caption><tr><td></td></tr>
                                        <tr>
                                            <td style="font-weight:bold;">Partner</td>
-                                           <td><span t-field="o.ref1.name" /></td>
+                                           <td>
+                                               <t t-if="o.ref1">
+                                                   <span t-field="o.ref1.name" />
+                                               </t>
+                                           </td>
                                        </tr>
                                        <tr>
                                            <td style="font-weight:bold;">Product</td>
-                                           <td><span t-field="o.ref2.name"/></td>
+                                           <td>
+                                               <t t-if="o.ref2">
+                                                   <span t-field="o.ref2.name"/>
+                                               </t>
+                                           </td>
                                        </tr>
                                        <tr>
                                            <td style="font-weight:bold;">Invoice</td>
-                                           <td><span t-if="o.ref3.type == 'out_invoice' and (o.ref3.state == 'open' or o.ref3.state == 'paid')">Invoice : </span>
-                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'proforma2'">PRO-FORMA : </span>
-                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'draft'">Draft Invoice : </span>
-                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'cancel'">Cancelled Invoice : </span>
-                                               <span t-if="o.ref3.type == 'out_refund'">Refund : </span>
-                                               <span t-if="o.ref3.type == 'in_refund'">Supplier Refund : </span>
-                                               <span t-if="o.ref3.type == 'in_invoice'">Supplier Invoice : </span>
-                                               <span t-field="o.ref3.internal_number"/>
+                                           <td>
+                                               <t t-if="o.ref3">
+	                                               <span t-if="o.ref3.type == 'out_invoice' and (o.ref3.state == 'open' or o.ref3.state == 'paid')">Invoice : </span>
+	                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'proforma2'">PRO-FORMA : </span>
+	                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'draft'">Draft Invoice : </span>
+	                                               <span t-if="o.ref3.type == 'out_invoice' and o.ref3.state == 'cancel'">Cancelled Invoice : </span>
+	                                               <span t-if="o.ref3.type == 'out_refund'">Refund : </span>
+	                                               <span t-if="o.ref3.type == 'in_refund'">Supplier Refund : </span>
+	                                               <span t-if="o.ref3.type == 'in_invoice'">Supplier Invoice : </span>
+	                                               <span t-field="o.ref3.internal_number"/>
+	                                           </t>
                                            </td>
                                        </tr>
                                        <tr>
                                            <td style="font-weight:bold;"> Sales Order</td>
-                                           <td><span t-field="o.ref4.name"/></td>
+                                           <td>
+                                               <t t-if="o.ref4">
+                                                   <span t-field="o.ref4.name"/>
+                                               </t>
+                                           </td>
                                        </tr>
                                        <tr>
                                            <td style="font-weight:bold;"> Serial Numbers</td>
-                                           <td><span t-field="o.ref5.name"/></td>
+                                           <td>
+                                               <t t-if="o.ref5">
+                                                   <span t-field="o.ref5.name"/>
+                                               </t>
+                                           </td>
                                        </tr>
                                        <tr>
                                            <td style="font-weight:bold;"> Purchase Order</td>
-                                           <td><span t-field="o.ref6.name"/></td>
+                                           <td>
+                                               <t t-if="o.ref6">
+                                                   <span t-field="o.ref6.name"/>
+                                               </t>
+                                           </td>
                                        </tr>
                                    </table>
                                </div>

@@ -35,7 +35,8 @@ class crm_claim(models.Model):
     ref4 = fields.Reference(string='Sales Order',
                             selection=[('sale.order', 'Sales Order')])
     ref5 = fields.Reference(string='Serial Numbers',
-                        selection=[('stock.production.lot', 'Serial Number')])
+                            selection=[('stock.production.lot',
+                                        'Serial Number')])
     ref6 = fields.Reference(string='Purchase Order',
                             selection=[('purchase.order', 'Purchase Order')])
     rpt_ref = fields.Char(string='Report Ref.')
