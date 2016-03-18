@@ -30,7 +30,7 @@
     'website': 'http://www.serpentcs.com',
     'depends': ['sale_stock', 'report'],
     'data': [
-        'views/vert_sale_view.xml',
+        'data/vert_sales_team_data.xml'
         'data/available_data.xml',
         'data/shipping_duration_data.xml',
         'data/quotation_validity_data.xml',
@@ -38,6 +38,7 @@
         'data/forward_exchange_contract_data.xml',
         'data/sale_deposits_data.xml',
         'data/balance_payable_data.xml',
+        'views/vert_sale_view.xml',
         'security/ir.model.access.csv',
         'views/vert_sale_report.xml',
     ],
