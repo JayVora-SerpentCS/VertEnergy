@@ -31,8 +31,8 @@
     'depends': ['account'],
     'data': [
         'views/account_invoice_report.xml',
-        'data/payment_term_data.xml'
-    ],
+        'views/vert_account_view.xml',
+        'data/payment_term_data.xml'],
     'installable': True,
     'auto_install': False,
 }

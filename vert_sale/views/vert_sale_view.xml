@@ -43,5 +43,18 @@
                 </xpath>
             </field>
         </record>
+        <record id="vert_view_order_line_serial_no" model="ir.ui.view">
+            <field name="name">sale.orderline.form.serial</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[@string='Sales Order']/sheet/notebook/page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='name']" position="after">
+                     <field name="serial_no"/>
+                </xpath>
+                <xpath expr="//form[@string='Sales Order']/sheet/notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='product_id']" position="after">
+                     <field name="serial_no"/>
+                </xpath>
+           </field>
+        </record>
     </data>
 </openerp>

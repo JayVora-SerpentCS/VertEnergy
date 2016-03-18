@@ -1,0 +1,26 @@
+<openerp>
+    <data>
+        <!-- Add Product Description field in stock.move -->
+       <record id="vert_view_product_description" model="ir.ui.view">
+           <field name="name">view.product.description</field>
+           <field name="model">stock.move</field>
+           <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+           <field name="arch" type="xml">
+               <xpath expr="//tree[@string='Stock Moves']/field[@name='product_id']" position="after">
+                   <field name="name"/>
+                   <field name="serial_no"/>
+               </xpath>
+           </field>
+       </record>
+       <record id="vert_view_product_description_form" model="ir.ui.view">
+           <field name="name">view.product.description.form</field>
+           <field name="model">stock.move</field>
+           <field name="inherit_id" ref="stock.view_move_picking_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//form/group/group/field[@name='name']" position="after">
+                   <field name="serial_no"/>
+               </xpath>
+           </field>
+       </record>
+    </data>
+</openerp>

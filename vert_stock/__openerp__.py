@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016-Today Serpent Consulting Services Pvt.Ltd.
+#    Copyright (C) 2016-TODAY Serpent Consulting Services Pvt.Ltd.
 #    (<http://www.serpentcs.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,16 +20,18 @@
 #
 ##############################################################################
 
-from openerp import models, fields
-
-
-class product_template(models.Model):
-    _inherit = "product.template"
-    _description = "Product Template"
-
-    length = fields.Float(string='Length(mm)')
-    width = fields.Float(string='Width  (mm)')
-    height = fields.Float(string='Height(mm)')
-    coo = fields.Char(string='Country of Origin')
-    cth = fields.Char(string='Customs Tariff Heading')
-    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+{
+    'name': 'Vert Stock',
+    'version': '1.0',
+    'category': 'Sales Management',
+    'description': """
+        This module used to maintain Stock Management of the Product.
+     """,
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
+    'website': 'http://www.serpentcs.com',
+    'depends': ['stock'],
+    'data': ['views/vert_stock_view.xml',
+             'views/vert_stock_picking_report.xml'],
+    'installable': True,
+    'auto_install': False,
+}

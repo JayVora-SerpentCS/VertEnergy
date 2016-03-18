@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016-Today Serpent Consulting Services Pvt.Ltd.
+#    Copyright (C) 2016-TODAY Serpent Consulting Services Pvt.Ltd.
 #    (<http://www.serpentcs.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,16 +20,23 @@
 #
 ##############################################################################
 
-from openerp import models, fields
+from openerp import fields, models, api
 
 
-class product_template(models.Model):
-    _inherit = "product.template"
-    _description = "Product Template"
+class stock_move(models.Model):
+    _inherit = "stock.move"
 
-    length = fields.Float(string='Length(mm)')
-    width = fields.Float(string='Width  (mm)')
-    height = fields.Float(string='Height(mm)')
-    coo = fields.Char(string='Country of Origin')
-    cth = fields.Char(string='Customs Tariff Heading')
     serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+
+class procurement_order(models.Model):
+    _inherit = "procurement.order"
+
+    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+    @api.v7
+    def _run_move_create(self, cr, uid, procurement, context=None):
+        vals = super(procurement_order, self)._run_move_create(cr,
+                                            uid, procurement, context=context)
+        vals.update({'serial_no': procurement.serial_no.id})
+        return vals
