@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="vert_sale_team1" model="crm.case.section">
+            <field name="name">Website Sales</field>
+            <field name="code">WSL</field>
+            <field name="invoiced_target">50000</field>
+            <field name="invoiced_forecast">35000</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root')),(4, ref('base.user_demo'))]"/>
+        </record>
+        <record id="vert_sale_team2" model="crm.case.section">
+            <field name="name">Inter-Company Sales</field>
+            <field name="code">ICSL</field>
+            <field name="invoiced_target">45000</field>
+            <field name="invoiced_forecast">30000</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root')),(4, ref('base.user_demo'))]"/>
+        </record>
+    </data>
+</openerp>

@@ -27,3 +27,4 @@ class account_invoice_line(models.Model):
     _inherit = 'account.invoice.line'
 
     serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

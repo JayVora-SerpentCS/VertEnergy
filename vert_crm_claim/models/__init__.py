@@ -21,3 +21,5 @@
 ##############################################################################
 
 from . import vert_crm_claim
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -40,3 +40,5 @@ class procurement_order(models.Model):
                                             uid, procurement, context=context)
         vals.update({'serial_no': procurement.serial_no.id})
         return vals
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
