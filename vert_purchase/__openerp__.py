@@ -28,7 +28,7 @@
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['purchase', 'report'],
+    'depends': ['purchase', 'report', 'vert_base'],
     'data': [
         'views/vert_purchase_view.xml',
         'data/available_data.xml',

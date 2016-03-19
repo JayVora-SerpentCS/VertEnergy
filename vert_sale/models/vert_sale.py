@@ -88,9 +88,12 @@ class sale_order(models.Model):
     bal_pay = fields.Many2one('sale.balance.payable', string='Balance Payable')
 
     @api.v7
-    def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
+    def _prepare_order_line_procurement(self, cr, uid, order, line,
+                                        group_id=False, context=None):
         res = super(sale_order, self)._prepare_order_line_procurement(cr,
-              uid, order, line, group_id=group_id, context=context)
+                                                    uid, order, line,
+                                                    group_id=group_id,
+                                                    context=context)
         res.update({'serial_no': line.serial_no.id})
         return res
 

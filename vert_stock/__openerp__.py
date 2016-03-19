@@ -29,7 +29,7 @@
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['stock'],
+    'depends': ['stock', 'vert_product'],
     'data': ['views/vert_stock_view.xml',
              'views/vert_stock_picking_report.xml'],
     'installable': True,
