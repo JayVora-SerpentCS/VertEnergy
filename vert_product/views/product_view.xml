@@ -19,6 +19,11 @@
                         <field name="cth"/>
                     </group>
                 </xpath>
+                <xpath expr="//form/sheet/notebook/page[@string='Information']/field[@name='description']" position="before">
+                    <group>
+                        <field name="serial_no" invisible="1"/>
+                    </group>
+                </xpath>
             </field>
         </record>
     </data>

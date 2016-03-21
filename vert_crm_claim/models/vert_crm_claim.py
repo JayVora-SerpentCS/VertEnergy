@@ -43,3 +43,5 @@ class crm_claim(models.Model):
     ins_date = fields.Datetime('Inspection Date', select=True)
     inspected_by = fields.Many2one('hr.employee', string='Inspected by')
     approved_by = fields.Many2one('hr.employee', string='Approved by')
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

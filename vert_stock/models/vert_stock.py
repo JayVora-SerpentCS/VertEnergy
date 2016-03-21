@@ -19,30 +19,26 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Vert Purchase Management',
-    'version': '1.0',
-    'category': 'Purchase Management',
-    'description': """
-        This module is used for customization of purchase orders
-     """,
-    'author': 'Serpent Consulting Services Pvt. Ltd.',
-    'website': 'http://www.serpentcs.com',
-    'depends': ['purchase', 'vert_base'],
-    'data': [
-        'views/vert_purchase_view.xml',
-        'data/available_data.xml',
-        'data/shipping_duration_data.xml',
-        'data/quotation_validity_data.xml',
-        'data/rate_exchange_data.xml',
-        'data/forward_exchange_contract_data.xml',
-        'data/sale_deposits_data.xml',
-        'data/balance_payable_data.xml',
-        'security/ir.model.access.csv',
-        'views/vert_purchase_report.xml'
-    ],
-    'installable': True,
-    'auto_install': False,
-}
+
+from openerp import fields, models, api
+
+
+class stock_move(models.Model):
+    _inherit = "stock.move"
+
+    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+
+class procurement_order(models.Model):
+    _inherit = "procurement.order"
+
+    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+    @api.v7
+    def _run_move_create(self, cr, uid, procurement, context=None):
+        vals = super(procurement_order, self)._run_move_create(
+            cr, uid, procurement, context=context)
+        vals.update({'serial_no': procurement.serial_no.id})
+        return vals
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

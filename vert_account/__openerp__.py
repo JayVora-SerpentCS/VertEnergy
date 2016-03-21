@@ -28,11 +28,11 @@
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['account'],
+    'depends': ['account', 'vert_base', 'vert_product'],
     'data': [
         'views/account_invoice_report.xml',
-        'data/payment_term_data.xml'
-    ],
+        'views/vert_account_view.xml',
+        'data/payment_term_data.xml'],
     'installable': True,
     'auto_install': False,
 }

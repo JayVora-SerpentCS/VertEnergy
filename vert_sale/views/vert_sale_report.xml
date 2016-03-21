@@ -46,6 +46,20 @@
                     </div>
                 </div>
             </xpath>
+            <xpath expr="//div[@class='page']/table/thead/tr/th" position="after">
+                <th>Serial No.</th>
+                <th>Country of Origin</th>
+                <th>Custom Tariff Heading</th>
+                <th>Weight(KG)</th>
+                <th>Dimensions L*W*H (mm)</th>
+            </xpath>
+            <xpath expr="//div[@class='page']/table/tbody[@class='sale_tbody']/tr/td" position="after">
+                <td><span t-field="l.serial_no"/></td>
+                <td><span t-field="l.product_id.coo"/></td>
+                <td><span t-field="l.product_id.cth"/></td>
+                <td><span t-field="l.product_id.weight"/></td>
+                <td><span t-field="l.product_id.length"/>x<span t-field="l.product_id.width"/>x<span t-field="l.product_id.height"/></td>
+            </xpath>
         </template>
     </data>
 </openerp>

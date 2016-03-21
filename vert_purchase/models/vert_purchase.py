@@ -89,3 +89,5 @@ class purchase_order(models.Model):
     deposit = fields.Many2one('purchase.deposits', string='Deposits')
     bal_pay = fields.Many2one('purchase.balance.payable',
                               string='Balance Payable')
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

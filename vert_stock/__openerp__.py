@@ -19,30 +19,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 {
-    'name': 'Vert Purchase Management',
+    'name': 'Vert Stock',
     'version': '1.0',
-    'category': 'Purchase Management',
+    'category': 'Sales Management',
     'description': """
-        This module is used for customization of purchase orders
+        This module used to maintain Stock Management of the Product.
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['purchase', 'vert_base'],
-    'data': [
-        'views/vert_purchase_view.xml',
-        'data/available_data.xml',
-        'data/shipping_duration_data.xml',
-        'data/quotation_validity_data.xml',
-        'data/rate_exchange_data.xml',
-        'data/forward_exchange_contract_data.xml',
-        'data/sale_deposits_data.xml',
-        'data/balance_payable_data.xml',
-        'security/ir.model.access.csv',
-        'views/vert_purchase_report.xml'
-    ],
+    'depends': ['stock', 'vert_base', 'vert_product'],
+    'data': ['views/vert_stock_view.xml',
+             'views/vert_stock_picking_report.xml'],
     'installable': True,
     'auto_install': False,
 }
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

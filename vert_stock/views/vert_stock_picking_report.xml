@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="vert_stock_report" inherit_id="stock.report_picking">
+            <xpath expr="//div[@class='page']/table[@t-if='not o.pack_operation_ids']/thead/tr/th" position="after">
+                <th>Serial No.</th>
+                <th>Country of Origin</th>
+                <th>Custom Tariff Heading</th>
+                <th>Weight(KG)</th>
+                <th>Dimensions L*W*H (mm)</th>
+            </xpath>
+            <xpath expr="//div[@class='page']/table/tbody/tr[@t-foreach='o.move_lines']/t/td" position="after">
+                <td><span t-field="move.serial_no"/></td>
+                <td><span t-field="move.product_id.coo"/></td>
+                <td><span t-field="move.product_id.cth"/></td>
+                <td><span t-field="move.product_id.weight"/></td>
+                <td><span t-field="move.product_id.length"/>X<span t-field="move.product_id.width"/>X<span t-field="move.product_id.height"/></td>
+            </xpath>
+        </template>
+    </data>
+</openerp>

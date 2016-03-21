@@ -32,3 +32,6 @@ class product_template(models.Model):
     height = fields.Float(string='Height(mm)')
     coo = fields.Char(string='Country of Origin')
     cth = fields.Char(string='Customs Tariff Heading')
+    serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
