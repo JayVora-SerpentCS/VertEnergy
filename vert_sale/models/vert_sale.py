@@ -91,10 +91,8 @@ class sale_order(models.Model):
     def _prepare_order_line_procurement(self,
                                         cr, uid, order,
                                         line, group_id=False, context=None):
-        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid,
-                                                          order, line,
-                                                          group_id=group_id,
-                                                          context=context)
+        res = super(sale_order, self)._prepare_order_line_procurement(
+            cr, uid, order, line, group_id=group_id, context=context)
         res.update({'serial_no': line.serial_no.id})
         return res
 
@@ -108,9 +106,8 @@ class sale_order_line(models.Model):
     @api.v7
     def _prepare_order_line_invoice_line(self, cr, uid, line,
                                          account_id=False, context=None):
-        res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr,
-                                            uid, line, account_id=account_id,
-                                            context=context)
+        res = super(sale_order_line, self)._prepare_order_line_invoice_line(
+            cr, uid, line, account_id=account_id, context=context)
         res.update({'serial_no': line.serial_no.id})
         return res
 
