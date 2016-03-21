@@ -37,8 +37,8 @@ class procurement_order(models.Model):
     @api.v7
     def _run_move_create(self, cr, uid, procurement, context=None):
         vals = super(procurement_order, self)._run_move_create(cr,
-                                                  uid, procurement,
-                                                  context=context)
+                                                       uid, procurement,
+                                                       context=context)
         vals.update({'serial_no': procurement.serial_no.id})
         return vals
 

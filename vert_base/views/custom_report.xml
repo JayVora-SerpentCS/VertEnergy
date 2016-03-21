@@ -28,7 +28,7 @@
                         <div style="border-bottom: 1px solid black;"></div>
                     </div>
                 </div><br/>
-                <table widht="100%">
+                <table widht="100%" style="font-size:12px">
                     <thead>
                         <tr>
                             <th width="30%">Physical Address</th>
@@ -78,7 +78,7 @@
             <div class="footer">
                 <div class="text-center" style="border-top: 1px solid black;"></div>
                 <br/>
-                <table widht="100%">
+                <table widht="100%" style="font-size:12px">
                     <tr>
                         <td>Payments Within South Africa (ZAR)<br/>
                             Bank: First National Bank South Africa I Account Numbers: ZAR Acc No: 62360129756 I Branch: Bedford Gardens I Branch Code: 252155<br/>
