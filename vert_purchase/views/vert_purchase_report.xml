@@ -52,7 +52,7 @@
         </template>
         <template id="vert_purchaseorder_report_extend" inherit_id="purchase.report_purchaseorder_document">
             <xpath expr="//div[@class='page']/p[@t-field='o.notes']" position="after">
-                <br/><br/>
+                <br/>
                 <div class="row mt32 mb32">
                     <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
                         <strong>Supplier Ref. No:</strong>
@@ -90,9 +90,9 @@
                         <strong>Balance Payble:</strong>
                         <p t-field="o.bal_pay"/>
                     </div>
-                     <div class = "col-xs-12">
+                    <div class = "col-xs-12">
                         <strong>Rate of Exchange:</strong>
-                        <p align = "justify" t-field = "o.ex_rate"/><br/><br/><br/>
+                        <p align = "justify" t-field = "o.ex_rate"/><br/>
                         <strong>Forward Exchange Contract:</strong>
                         <p align = "justify" t-field = "o.ex_contract"/>
                     </div>

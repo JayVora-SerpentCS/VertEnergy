@@ -31,32 +31,32 @@
                 <table widht="100%" style="font-size:12px">
                     <thead>
                         <tr>
-                            <th width="30%">Physical Address</th>
-                            <th width="30%">Contact Details</th>
-                            <th width="20%">Postal Address</th>
-                            <th width="20%">Company Details</th>
+                            <th width="27%">Physical Address</th>
+                            <th width="27%">Contact Details</th>
+                            <th width="23%">Postal Address</th>
+                            <th width="23%">Company Details</th>
                         </tr>
                     </thead>
                     <tbody class="base_tbody">
-                        <tr>
-                            <td>
+                        <tr width="100%">
+                            <td width="30%">
                                 Unit 3 Route 24 Industrial Park<br/>
                                 187 Herman Road Meadowdale<br/>
                                 Johannesburg<br/>
                                 South Africa 1614
                             </td>
-                            <td>Phone: +27(0)11 453 9669<br/>
+                            <td width="30%">Phone: +27(0)11 453 9669<br/>
                                 Fax: +27(0)11 453 4531<br/>
                                 Email: info@vertgroup.co.za<br/>
                                 Website: www.vertgroup.co.za
                             </td>
-                            <td>
+                            <td width="20%">
                                 P.O. Box 3817 Dainfern<br/>
                                 Dainfern<br/>
                                 Johannesburg<br/>
                                 South Africa 2055
                             </td>
-                            <td>
+                            <td width="20%">
                                 Reg: 2011/003738/07<br/>
                                 VAT: 4930260742<br/>
                                 Import No: 21264473<br/>
