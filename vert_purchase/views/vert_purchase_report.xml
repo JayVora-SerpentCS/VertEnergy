@@ -3,7 +3,7 @@
     <data>
         <template id="vert_purchasequotation_report_extend" inherit_id="purchase.report_purchasequotation_document">
             <xpath expr="//div[@class='page']/p[@t-field='o.notes']" position="before">
-                <div class="row mt32 mb32">
+                <div class="row mt32 mb32" style="font-size:85%">
                     <div class="col-xs-3" t-if="o.partner_id.supp_acc_ref">
                         <strong>Supplier Ref. No:</strong>
                         <p t-field="o.partner_id.supp_acc_ref"/>
@@ -39,11 +39,12 @@
                     <div class="col-xs-10">
                         <strong>Balance Payble:</strong>
                         <p t-field="o.bal_pay"/>
+                        <br/>
                     </div>
                     <div style="page-break-after:auto"></div>
                     <div class = "col-xs-12">
                         <strong>Rate of Exchange:</strong>
-                        <p align = "justify" t-field = "o.ex_rate"/>
+                        <p align = "justify" t-field = "o.ex_rate"/><br/>
                         <strong>Forward Exchange Contract:</strong>
                         <p align = "justify" t-field = "o.ex_contract"/>
                     </div>
@@ -53,7 +54,7 @@
         <template id="vert_purchaseorder_report_extend" inherit_id="purchase.report_purchaseorder_document">
             <xpath expr="//div[@class='page']/p[@t-field='o.notes']" position="after">
                 <br/>
-                <div class="row mt32 mb32">
+                <div class="row mt32 mb32" style="font-size:85%">
                     <div class="col-xs-4" t-if="o.partner_id.supp_acc_ref">
                         <strong>Supplier Ref. No:</strong>
                         <p t-field="o.partner_id.supp_acc_ref"/>
@@ -88,7 +89,7 @@
                     </div>
                     <div class="col-xs-4">
                         <strong>Balance Payble:</strong>
-                        <p t-field="o.bal_pay"/>
+                        <p t-field="o.bal_pay"/><br/>
                     </div>
                     <div class = "col-xs-12">
                         <strong>Rate of Exchange:</strong>
@@ -97,6 +98,26 @@
                         <p align = "justify" t-field = "o.ex_contract"/>
                     </div>
                 </div>
+            </xpath>
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+                <div class="row mt32 mb32" style="font-size:85%">
+                <div t-if="o.name" class="col-xs-3">
+                    <strong>Our Order Reference:</strong>
+                    <p t-field="o.name"/>
+                </div>
+                <div t-if="o.partner_ref" class="col-xs-3">
+                    <strong>Your Order Reference</strong>
+                    <p t-field="o.partner_ref"/>
+                </div>
+                <div t-if="o.date_order" class="col-xs-3">
+                    <strong>Order Date:</strong>
+                    <p t-field="o.date_order"/>
+                </div>
+                <div t-if="o.validator" class="col-xs-3">
+                    <strong>Validated By:</strong>
+                    <p t-field="o.validator"/>
+                </div>
+            </div>
             </xpath>
         </template>
     </data>
