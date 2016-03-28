@@ -52,9 +52,22 @@
                      <field name="serial_no"/>
                 </xpath>
                 <xpath expr="//form[@string='Sales Order']/sheet/notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='product_id']" position="after">
-                     <field name="serial_no"/>
+                     <field name="serial_no" context="{'active_id': product_id}"/>
                 </xpath>
            </field>
         </record>
+        <record id="vert_view_stock_lot_form" model="ir.ui.view">
+           <field name="name">view.stock.lot.form</field>
+           <field name="model">stock.production.lot</field>
+           <field name="inherit_id" ref="stock.view_production_lot_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//form/group/group/field[@name='product_id']" position="after">
+                   <field name="access" invisible="1"/>
+               </xpath>
+               <xpath expr="//form/group/group/field[@name='product_id']" position="replace">
+                   <field name="product_id" attrs="{'readonly':[('access','=',True)]}"/>
+               </xpath>
+           </field>
+       </record>
     </data>
 </openerp>
