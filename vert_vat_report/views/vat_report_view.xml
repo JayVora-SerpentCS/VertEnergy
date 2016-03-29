@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--for header -->
+        <template id="account_external_layout">
+            <t t-call="vert_vat_report.account_external_layout_header"/>
+            <t t-raw="0" />
+        </template>
+        <template id="account_external_layout_header">
+            <div class="header" style="font-size: 14px;">
+                <table>
+                    <tr>
+                        <th style="text-align: left;width:600px"><t t-esc="company.name"></t></th>
+                        <th style="text-align: right;width:400px">
+                            <span t-esc="time.strftime('%Y/%m/%d %H:%M')" />
+                            <span>Page:</span>
+                            <span class="page" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th
+                            style="text-align: right;width:400px;padding-bottom:2px;padding-top:10px;">
+                            Prepared by:
+                            <t t-esc="user.name" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            Tax Type Report for the Tax Period
+                            (
+                            <span t-esc="data['form']['period_from']" />
+                            -
+                            <span t-esc="data['form']['period_to']" />
+                            )(CLOSED TAX PERIOD)
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </template>
+
+        <template id="vat_report">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <!--for Sale data -->
+                        <t t-if="data['form']['type'] == 'sale' or data['form']['type'] == 'both'">
+                        <div>
+                        <table width="100%" style="border-bottom: 1px solid;">
+                            <tr style="border-bottom: 1px solid;">
+                                <th width="11%" style="text-align: left;border-bottom: 1px solid">Date</th>
+                                <th width="7%" style="text-align: left;border-bottom: 1px solid">Type</th>
+                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Account</th>
+                                <th width="13%" style="text-align: left;border-bottom: 1px solid">Reference</th>
+                                <th width="25%" style="text-align: left;border-bottom: 1px solid">Description</th>
+                                <th width="10%" style="text-align: right;border-bottom: 1px solid">Exclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Inclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Tax Amount</th>
+                            </tr>
+                                <tr>
+                                    <td colspan="8" style="padding-bottom:10px;">Tax Type : 1 - Vat Standard rated -
+                                        Output Tax
+                                    </td>
+                                </tr>
+                                <t t-foreach="get_data(data['form'])" t-as="a1">
+                                    <t t-if="a1.get('type') == 'sale'">
+                                         <tr>
+                                            <td width="11%"><span t-esc="a1.get('date')" /></td>
+                                            <td width="7%"><span t-esc="a1.get('type')" /></td>
+                                            <td width="10%"><span t-esc="a1.get('account')" /></td>
+                                            <td width="13%"><span t-esc="a1.get('reference')" /></td>
+                                            <td width="25%"><span t-esc="a1.get('description')" /></td>
+                                            <td width="10%" style="text-align:right;"><span t-esc="a1.get('exclusive')" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('inclusive'))" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('tax_amount'))" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Customer Name: <span t-esc="a1.get('customer')" /></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <td colspan="5" style="border-top:1px solid;width:760px;">Total for Tax Type: 1 - Vat Standard
+                                        rated
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_base_sale())"></span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_inclusive_sale())">
+                                        </span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_amount_sale())"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p style="page-break-after: always;"></p>
+                        </t>
+                        <!--for Purchase data -->
+                        <t t-if="data['form']['type'] == 'purchase' or data['form']['type'] == 'both'">
+                        <div>
+                        <table width="100%" style="border-bottom: 1px solid;">
+                            <tr style="border-bottom: 1px solid;">
+                                <th width="11%" style="text-align: left;border-bottom: 1px solid">Date</th>
+                                <th width="7%" style="text-align: left;border-bottom: 1px solid">Type</th>
+                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Account</th>
+                                <th width="13%" style="text-align: left;border-bottom: 1px solid">Reference</th>
+                                <th width="25%" style="text-align: left;border-bottom: 1px solid">Description</th>
+                                <th width="10%" style="text-align: right;border-bottom: 1px solid">Exclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Inclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Tax Amount</th>
+                            </tr>
+                                <tr>
+                                    <td colspan="8" style="padding-bottom:10px;">Tax Type : 1 - Vat Standard rated -
+                                        Input Tax
+                                    </td>
+                                </tr>
+                                <t t-foreach="get_data(data['form'])" t-as="a1">
+                                    <t t-if="a1.get('type') == 'purchase'">
+                                         <tr>
+                                            <td width="11%"><span t-esc="a1.get('date')" /></td>
+                                            <td width="7%"><span t-esc="a1.get('type')" /></td>
+                                            <td width="10%"><span t-esc="a1.get('account')" /></td>
+                                            <td width="13%"><span t-esc="a1.get('reference')" /></td>
+                                            <td width="25%"><span t-esc="a1.get('description')" /></td>
+                                            <td width="10%" style="text-align:right;"><span t-esc="a1.get('exclusive')" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('inclusive'))" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('tax_amount'))" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Customer Name: <span t-esc="a1.get('customer')" /></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <td colspan="5" style="border-top:1px solid;width:760px;">Total for Tax Type: 1 - Vat Standard
+                                        rated
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_base_pur())"></span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_inclusive_pur())">
+                                        </span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_amount_pur())"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p style="page-break-after: always;"></p>
+                        </t>
+
+                    <!--for Bank data -->
+                    <!-- This part is comment because account_bank_statement_tax module is need to migrated in v8 -->
+                        <!-- <t t-if="data['form']['type'] == 'both'">
+                        <div>
+                        <table width="100%" style="border-bottom: 1px solid;">
+                            <tr style="border-bottom: 1px solid;">
+                                <th width="11%" style="text-align: left;border-bottom: 1px solid">Date</th>
+                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Type</th>
+                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Account</th>
+                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Reference</th>
+                                <th width="25%" style="text-align: left;border-bottom: 1px solid">Description</th>
+                                <th width="10%" style="text-align: right;border-bottom: 1px solid">Exclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Inclusive</th>
+                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Tax Amount</th>
+                            </tr>
+                                <tr>
+                                    <td colspan="8" style="padding-bottom:10px;">Tax Type : 1 - Vat Standard rated -
+                                        Output Tax
+                                    </td>
+                                </tr>
+                                <t t-foreach="get_bank_data(data['form'])" t-as="a1">
+                                         <tr>
+                                            <td width="11%"><span t-esc="a1.get('date')" /></td>
+                                            <td width="10%">Bank</td>
+                                            <td width="10%"><span t-esc="a1.get('account')" /></td>
+                                            <td width="10%"><span t-esc="a1.get('ref')" /></td>
+                                            <td width="25%"><span t-esc="a1.get('description')" /></td>
+                                            <td width="10%" style="text-align:right;"><span t-esc="a1.get('exclusive')" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('inclusive'))" /></td>
+                                            <td width="12%" style="text-align:right;"><span t-esc="a1.get('tax')" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Customer Name: <span t-esc="a1.get('customer')" /></td>
+                                        </tr>
+                                </t>
+                                <tr>
+                                    <td colspan="5" style="border-top:1px solid;width:760px;">Total for Tax Type: 1 - Vat Standard
+                                        rated
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_base_bank())"></span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_inclusive_bank())">
+                                        </span>
+                                    </td>
+                                    <td style="border-top:1px solid;width:100px;text-align:right;">
+                                        <span t-esc="formatLang(get_sum_amount_bank())"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p style="page-break-after: always;"></p>
+                        </t> -->
+                        
+                        <table width="100%">
+                            <tr>
+                                <td width="25%"></td>
+                                <td width="25%" align="center" style="text-align:center;">----Output Tax----</td>
+                                <td width="25%" align="center" style="text-align:center;">----Input Tax----</td>
+                                <td width="25%" align="center" style="text-align:center;">----Nett Tax----</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid;">
+                                <td width="25%" style="text-align:center;"></td>
+                                <td width="25%" style="text-align:center;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">Tax</td>
+                                            <td width="50%" style="text-align:center;">Inclusive</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">Tax</td>
+                                            <td width="50%" style="text-align:center;">Inclusive</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">Tax</td>
+                                            <td width="50%" style="text-align:center;">Inclusive</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr style="border-bottom:1px solid;">
+                                <td width="25%"
+                                    style="text-align:left;padding-bottom:2px;padding-top:2px;padding-left:2px;">Vat - Standard rated</td>
+                                <td width="25%" style="text-align:center;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_amount_sale())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_inclusive_sale())">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_amount_pur() + get_sum_amount_bank())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_inclusive_pur() + get_sum_inclusive_bank())">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_net_tax()  + get_sum_amount_bank())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_net_inclusive() + get_sum_inclusive_bank())"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom:1px solid;">
+                                <td width="25%"
+                                    style="text-align:left;padding-bottom:2px;padding-top:2px;padding-left:2px;">GRAND TOTAL</td>
+                                <td width="25%" style="text-align:center;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_amount_sale())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_inclusive_sale())"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_amount_pur() + get_sum_amount_bank())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_sum_inclusive_pur() + get_sum_inclusive_bank())"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="25%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_net_tax()  + get_sum_amount_bank())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_net_inclusive() + get_sum_inclusive_bank())"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr height="30px" style="border-bottom:1px solid;">
+                                <td width="50%"
+                                    style="padding-top:15px;padding-left:2px;border-bottom:1px solid;"
+                                    colspan="2">
+                                    Balance of Tax Control Account as at
+                                    <span t-esc="time.strftime('%Y/%m/%d')" />
+                                </td>
+                                <td width="25%" align="center"
+                                    style="text-align:center;padding-top:15px;padding-left:2px;border-bottom:1px solid;"></td>
+                                <td width="25%" align="center"
+                                    style="text-align:center;padding-top:15px;padding-left:2px;border-bottom:1px solid;"></td>
+                            </tr>
+
+                            <tr height="30px">
+                                <td width="50%" style="padding-top:15px;padding-left:2px;"
+                                    colspan="2">Tax Total as per this report</td>
+                                <td width="25%" align="center"
+                                    style="text-align:center;padding-top:15px;padding-left:2px;text-align:right;">
+                                </td>
+                                <td width="25%" align="left"
+                                    style="text-align:center;padding-top:15px;padding-left:2px;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" style="text-align:center;">
+                                                <span t-esc="formatLang(get_net_tax() + get_sum_amount_bank())"></span>
+                                            </td>
+                                            <td width="50%" style="text-align:center;">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table>
+                            <tr>
+                                <td>Notes:</td>
+                            </tr>
+                            <tr>
+                                <td>The difference between the Balance on the Tax
+                                    Control
+                                    Account
+                                    ant the Total of this report could be caused by
+                                    either of
+                                    the
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    following:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    - Not all Tax Types having been included on this
+                                    report.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    - Tax transactions having been proccessed to dates
+                                    earlier
+                                    than
+                                    30/04/14, but not included in the VAT Payment /
+                                    Refund for
+                                    that
+                                    period.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:15px;">
+                                    If there is difference, it is recommended that this
+                                    is
+                                    reconciled
+                                    and, where appropriate, rectified to avoid
+                                    incurring
+                                    fines and
+                                    / or penalties from the tax authorities.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
