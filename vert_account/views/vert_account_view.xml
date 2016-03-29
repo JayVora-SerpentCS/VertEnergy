@@ -8,7 +8,7 @@
              <field name="arch" type="xml">
                  <data>
                     <xpath expr="//page[@string='Invoice Lines']/field[@name='invoice_line']/tree/field[@name='name']" position="after">
-                        <field name="serial_no"/>
+                        <field name="serial_no" context="{'active_id': product_id}"/>
                     </xpath>
                  </data>
              </field>

@@ -1,0 +1,19 @@
+html, body, div, span,
+p, font, img, strong,
+label, table, caption, tbody,
+tfoot, thead, tr, th, td,
+footer, header, template
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 95%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+h2
+{
+    font-size: 130%;
+}

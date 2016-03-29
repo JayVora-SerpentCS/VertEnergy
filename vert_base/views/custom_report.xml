@@ -28,35 +28,41 @@
                         <div style="border-bottom: 1px solid black;"></div>
                     </div>
                 </div><br/>
-                <table widht="100%" style="font-size:12px">
+                <table widht="100%">
                     <thead>
                         <tr>
-                            <th width="30%">Physical Address</th>
-                            <th width="30%">Contact Details</th>
-                            <th width="20%">Postal Address</th>
-                            <th width="20%">Company Details</th>
+                            <th width="27%">Physical Address</th>
+                            <th></th>
+                            <th width="27%">Contact Details</th>
+                            <th></th>
+                            <th width="23%">Postal Address</th>
+                            <th></th>
+                            <th width="23%">Company Details</th>
                         </tr>
                     </thead>
                     <tbody class="base_tbody">
-                        <tr>
-                            <td>
+                        <tr width="100%">
+                            <td width="30%">
                                 Unit 3 Route 24 Industrial Park<br/>
                                 187 Herman Road Meadowdale<br/>
                                 Johannesburg<br/>
                                 South Africa 1614
                             </td>
-                            <td>Phone: +27(0)11 453 9669<br/>
+                            <td></td>
+                            <td width="30%">Phone: +27(0)11 453 9669<br/>
                                 Fax: +27(0)11 453 4531<br/>
                                 Email: info@vertgroup.co.za<br/>
                                 Website: www.vertgroup.co.za
                             </td>
-                            <td>
+                            <td></td>
+                            <td width="20%">
                                 P.O. Box 3817 Dainfern<br/>
                                 Dainfern<br/>
                                 Johannesburg<br/>
                                 South Africa 2055
                             </td>
-                            <td>
+                            <td></td>
+                            <td width="20%">
                                 Reg: 2011/003738/07<br/>
                                 VAT: 4930260742<br/>
                                 Import No: 21264473<br/>
@@ -78,9 +84,9 @@
             <div class="footer">
                 <div class="text-center" style="border-top: 1px solid black;"></div>
                 <br/>
-                <table widht="100%" style="font-size:12px">
-                    <tr>
-                        <td>Payments Within South Africa (ZAR)<br/>
+                <table widht="100%">
+                    <tr width="100%">
+                        <td width="100%">Payments Within South Africa (ZAR)<br/>
                             Bank: First National Bank South Africa I Account Numbers: ZAR Acc No: 62360129756 I Branch: Bedford Gardens I Branch Code: 252155<br/>
                             International Payments (Euro &amp; US Dollar)<br/>
                             Bank: First National Bank South Africa I Account Numbers: US$ Acc No: 0318124 EUR Acc No: 0318108 I Swift Code: FIRNZAJJ
@@ -94,6 +100,12 @@
                 </div>
                 <p align="right"><b>DESIGNED TO PERFORM. BUILT TO LAST.</b></p>
             </div>
+        </template>
+        
+        <template id="custom_report_vert_css" inherit_id="report.minimal_layout">
+            <xpath expr="//html[@style='height: 0;']/head" position="inside">
+                <link href="/vert_base/static/src/css/vert_report_layout.css" rel="stylesheet"/>
+            </xpath>
         </template>
     </data>
 </openerp>

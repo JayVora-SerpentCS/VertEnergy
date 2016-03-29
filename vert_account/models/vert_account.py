@@ -20,11 +20,25 @@
 #
 ##############################################################################
 
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class account_invoice_line(models.Model):
     _inherit = 'account.invoice.line'
 
     serial_no = fields.Many2one('stock.production.lot', string="Serial Number")
+
+
+class stock_production_lot(models.Model):
+    _inherit = 'stock.production.lot'
+
+    @api.v7
+    def default_get(self, cr, uid, fields, context=None):
+        record_id = context.get('active_id')
+        res = super(stock_production_lot, self).default_get(
+            cr, uid, fields, context=context)
+        if 'product_id' in fields and record_id:
+            res.update({'product_id': record_id})
+        return res
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
