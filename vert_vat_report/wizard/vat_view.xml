@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="report_vat_form" model="ir.ui.view">
+            <field name="name">report.vat.form</field>
+            <field name="model">report.vat</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Vat Report" version="8.0">
+                    <group colspan="4" col="4">
+                        <field name="period_from" required="1"/>
+                        <field name="period_to" required="1"/>
+                    </group>
+                    <group>
+                        <field name="type"/>
+                    </group>
+                    <footer>
+                        <button name="print_vat_report" type="object" string="Print" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Close" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_report_vat" model="ir.actions.act_window">
+            <field name="name">Vat Report</field>
+            <field name="res_model">report.vat</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="main_wizard_vat" parent="account.menu_finance" name="Vat" />
+        <menuitem id="sub_wizard_vat" action="action_report_vat" parent="main_wizard_vat" name="Vat Report" />
+    </data>
+</openerp>
