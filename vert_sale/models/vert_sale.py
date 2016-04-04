@@ -20,7 +20,8 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
+from openerp.exceptions import except_orm
 
 
 class sale_availability(models.Model):
@@ -95,6 +96,21 @@ class sale_order(models.Model):
             cr, uid, order, line, group_id=group_id, context=context)
         res.update({'serial_no': line.serial_no.id})
         return res
+
+    @api.multi
+    def action_wait(self):
+        self.check_limit()
+        return super(sale_order, self).action_wait()
+
+    @api.one
+    def check_limit(self):
+        tot_due = self.amount_total + self.partner_id.credit
+        if self.partner_id.credit_limit < tot_due:
+            raise except_orm(_('Credit Limit'),
+                             _('Validating order exceeds the credit'\
+                              ' limit of %s') % (self.partner_id.name))
+            return False
+        return True
 
 
 class sale_order_line(models.Model):
