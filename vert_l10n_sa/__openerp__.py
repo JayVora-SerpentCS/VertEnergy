@@ -24,10 +24,9 @@
     'version': '1.0',
     'category': 'Localization/Account Charts',
     'description': """
-        Indian Accounting: Chart of Account.
+        South Africa Accounting: Chart of Account.
 
-        Indian accounting chart and localization.
-
+        South Africa chart and localization.
         Odoo allows to manage South Africa Accounting by providing
         Three Formats of Chart of Account.
         1) Vert Energy System - Chart of Account
