@@ -69,9 +69,9 @@ class vat_report(report_sxw.rml_parse):
                         vals = {
                             'date': rec.date or True,
                             'account': (rec.account_id and
-                                rec.account_id.code or " ") + " "
-                                + (rec.account_id and
-                                rec.account_id.name or " "),
+                            rec.account_id.code or " ") + " "
+                            + (rec.account_id and
+                            rec.account_id.name or " "),
                             'ref': rec.ref or '',
                             'description': rec.tax_id.name or '',
                             'exclusive': rec.amount or 0.0,
@@ -110,16 +110,17 @@ class vat_report(report_sxw.rml_parse):
                                     stx = invoice_rec.invoice_line_tax_id
                                     for tax_line in stx:
                                         tax_name = (tax_line.name
-                                                    + "," + tax_name)
+                                            + "," + tax_name)
                                         tax_amount_cal_sale = ((
                                             invoice_rec.price_subtotal *
                                             tax_line.amount) +
                                             tax_amount_cal_sale)
                                         account_name_sale = (
-                                         tax_line.account_collected_id.code
-                                         + " "
-                                         + tax_line.account_collected_id.name
-                                         )
+                                            tax_line.account_collected_id.code
+                                            + " "
+                                            + tax_line.
+                                            account_collected_id.name
+                                            )
                                     vals = {
                                         'date': line.move_id.date or True,
                                         'type': line.journal_id.type or '',
@@ -127,15 +128,12 @@ class vat_report(report_sxw.rml_parse):
                                         'reference': line.number or '',
                                         'description': tax_name or '',
                                         'exclusive':
-                                            invoice_rec.price_subtotal
-                                            or 0.0,
-                                        'inclusive': tax_amount_cal_sale +
-                                            invoice_rec.price_subtotal
-                                            or 0.0,
+                                        invoice_rec.price_subtotal or 0.0,
+                                        'inclusive': tax_amount_cal_sale
+                                        + invoice_rec.price_subtotal or 0.0,
                                         'tax_amount': tax_amount_cal_sale
-                                            or 0.0,
-                                        'customer': line.partner_id.name
-                                            or ''}
+                                        or 0.0,
+                                        'customer': line.partner_id.name or ''}
                                     res_list.append(vals)
                             self.sum_amount_sale += line.amount_tax
                         if line.journal_id.type == 'purchase':
@@ -152,8 +150,8 @@ class vat_report(report_sxw.rml_parse):
                                             + tax_name)
                                         tax_amount_cal_pur = ((
                                             invoice_rec.price_subtotal *
-                                            tax_line.amount) +
-                                            tax_amount_cal_pur)
+                                            tax_line.amount)
+                                            + tax_amount_cal_pur)
                                         account_name_pur = (
                                          tax_line.account_collected_id.code
                                          + " "
@@ -189,7 +187,7 @@ class vat_report(report_sxw.rml_parse):
                                         itx = invoice_rec.invoice_line_tax_id
                                         for tax_line in itx:
                                             tax_name = (tax_line.name + ","
-                                                        + tax_name)
+                                                + tax_name)
                                             tax_amount_cal_sale = ((
                                                 invoice_rec.price_subtotal
                                                 * tax_line.amount)
@@ -206,16 +204,16 @@ class vat_report(report_sxw.rml_parse):
                                             'reference': line.number or '',
                                             'description': tax_name or '',
                                             'exclusive':
-                                                invoice_rec.price_subtotal
-                                                or 0.0,
+                                            invoice_rec.price_subtotal
+                                            or 0.0,
                                             'inclusive':
-                                                tax_amount_cal_sale +
-                                                invoice_rec.price_subtotal
-                                                or 0.0,
+                                            tax_amount_cal_sale +
+                                            invoice_rec.price_subtotal
+                                            or 0.0,
                                             'tax_amount':
-                                                tax_amount_cal_sale or 0.0,
+                                            tax_amount_cal_sale or 0.0,
                                             'customer':
-                                                line.partner_id.name or ''}
+                                            line.partner_id.name or ''}
                                         res_list.append(vals)
                                 self.sum_amount_sale += line.amount_tax
                             if line.journal_id.type == 'purchase':
@@ -229,7 +227,7 @@ class vat_report(report_sxw.rml_parse):
                                         ptx = invoice_rec.invoice_line_tax_id
                                         for tax_line in ptx:
                                             tax_name = (tax_line.name + ","
-                                                        + tax_name)
+                                                + tax_name)
                                             tax_amount_cal_pur = ((
                                                 invoice_rec.price_subtotal *
                                                 tax_line.amount)
@@ -246,14 +244,14 @@ class vat_report(report_sxw.rml_parse):
                                             'reference': line.number or '',
                                             'description': tax_name,
                                             'exclusive':
-                                                invoice_rec.price_subtotal,
+                                            invoice_rec.price_subtotal,
                                             'inclusive':
-                                                tax_amount_cal_pur
-                                                + invoice_rec.price_subtotal,
+                                            tax_amount_cal_pur
+                                            + invoice_rec.price_subtotal,
                                             'tax_amount':
-                                                tax_amount_cal_pur,
+                                            tax_amount_cal_pur,
                                             'customer':
-                                                line.partner_id.name or ''}
+                                            line.partner_id.name or ''}
                                         res_list.append(vals)
                                 self.sum_amount_pur += line.amount_tax
         return res_list
