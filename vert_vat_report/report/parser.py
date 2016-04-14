@@ -69,8 +69,8 @@ class vat_report(report_sxw.rml_parse):
                         vals = {
                             'date': rec.date or True,
                             'account': ((rec.account_id and rec.account_id
-                            .code or " ") + " " + (rec.account_id and
-                            rec.account_id.name or " ")),
+                            .code or " ") + " " + (rec.account_id and rec
+                            .account_id.name or " ")),
                             'ref': rec.ref or '',
                             'description': rec.tax_id.name or '',
                             'exclusive': rec.amount or 0.0,
@@ -185,8 +185,8 @@ class vat_report(report_sxw.rml_parse):
                                         tax_name = ''
                                         itx = invoice_rec.invoice_line_tax_id
                                         for tax_line in itx:
-                                            tax_name = (tax_line.name + ","
-                                                        + tax_name)
+                                            tax_name = (
+                                                tax_line.name + "," + tax_name)
                                             tax_amount_cal_sale = ((
                                                 invoice_rec.price_subtotal *
                                                 tax_line.amount) +
