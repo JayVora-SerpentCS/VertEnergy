@@ -68,10 +68,10 @@ class vat_report(report_sxw.rml_parse):
                             tax_amount + self.sum_amount_bank)
                         vals = {
                             'date': rec.date or True,
-                            'account': (rec.account_id and \
-                                rec.account_id.code or " ") + " " \
-                                + (rec.account_id and \
-                                rec.account_id.name or " "),
+                            'account': (rec.account_id and
+                            rec.account_id.code or " ") + " " +
+                            (rec.account_id and
+                            rec.account_id.name or " "),
                             'ref': rec.ref or '',
                             'description': rec.tax_id.name or '',
                             'exclusive': rec.amount or 0.0,
@@ -109,8 +109,8 @@ class vat_report(report_sxw.rml_parse):
                                     tax_name = ''
                                     stx = invoice_rec.invoice_line_tax_id
                                     for tax_line in stx:
-                                        tax_name = (tax_line.name
-                                                    + "," + tax_name)
+                                        tax_name = (tax_line.name + "," +
+                                                    tax_name)
                                         tax_amount_cal_sale = ((
                                             invoice_rec.price_subtotal *
                                             tax_line.amount) +
@@ -128,29 +128,29 @@ class vat_report(report_sxw.rml_parse):
                                         'description': tax_name or '',
                                         'exclusive':
                                         invoice_rec.price_subtotal or 0.0,
-                                        'inclusive': tax_amount_cal_sale
-                                        + invoice_rec.price_subtotal or 0.0,
-                                        'tax_amount': tax_amount_cal_sale
-                                        or 0.0,
+                                        'inclusive': tax_amount_cal_sale +
+                                        invoice_rec.price_subtotal or 0.0,
+                                        'tax_amount': tax_amount_cal_sale or
+                                        0.0,
                                         'customer': line.partner_id.name or ''}
                                     res_list.append(vals)
                             self.sum_amount_sale += line.amount_tax
                         if line.journal_id.type == 'purchase':
                             for invoice_rec in line.invoice_line:
                                 if invoice_rec.invoice_line_tax_id:
-                                    self.sum_base_pur = (self.sum_base_pur
-                                        + invoice_rec.price_subtotal)
+                                    self.sum_base_pur = (self.sum_base_pur +
+                                        invoice_rec.price_subtotal)
                                     tax_amount_cal_pur = 0.0
                                     account_name_pur = ''
                                     tax_name = ''
                                     ltx = invoice_rec.invoice_line_tax_id
                                     for tax_line in ltx:
-                                        tax_name = (tax_line.name + ","
-                                            + tax_name)
+                                        tax_name = (tax_line.name + "," +
+                                                    tax_name)
                                         tax_amount_cal_pur = ((
                                             invoice_rec.price_subtotal *
-                                            tax_line.amount)
-                                            + tax_amount_cal_pur)
+                                            tax_line.amount) +
+                                            tax_amount_cal_pur)
                                         account_name_pur = (
                                          tax_line.account_collected_id.code
                                          + " "
@@ -227,8 +227,8 @@ class vat_report(report_sxw.rml_parse):
                                                         tax_name)
                                             tax_amount_cal_pur = ((
                                                 invoice_rec.price_subtotal *
-                                                tax_line.amount)\
-                                                + tax_amount_cal_pur)
+                                                tax_line.amount) +
+                                                tax_amount_cal_pur)
                                             account_name_pur = (
                                                 tax_line.account_collected_id.code
                                                 + " " +
@@ -243,8 +243,8 @@ class vat_report(report_sxw.rml_parse):
                                             'exclusive':
                                             invoice_rec.price_subtotal,
                                             'inclusive':
-                                            tax_amount_cal_pur
-                                            + invoice_rec.price_subtotal,
+                                            tax_amount_cal_pur +
+                                            invoice_rec.price_subtotal,
                                             'tax_amount':
                                             tax_amount_cal_pur,
                                             'customer':
