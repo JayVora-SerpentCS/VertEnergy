@@ -68,10 +68,10 @@ class vat_report(report_sxw.rml_parse):
                             tax_amount + self.sum_amount_bank)
                         vals = {
                             'date': rec.date or True,
-                            'account': (rec.account_id and
-                            rec.account_id.code or " ") + " "
-                            + (rec.account_id and
-                            rec.account_id.name or " "),
+                            'account': (rec.account_id and \
+                                rec.account_id.code or " ") + " " \
+                                + (rec.account_id and \
+                                rec.account_id.name or " "),
                             'ref': rec.ref or '',
                             'description': rec.tax_id.name or '',
                             'exclusive': rec.amount or 0.0,
@@ -110,16 +110,15 @@ class vat_report(report_sxw.rml_parse):
                                     stx = invoice_rec.invoice_line_tax_id
                                     for tax_line in stx:
                                         tax_name = (tax_line.name
-                                            + "," + tax_name)
+                                                    + "," + tax_name)
                                         tax_amount_cal_sale = ((
                                             invoice_rec.price_subtotal *
                                             tax_line.amount) +
                                             tax_amount_cal_sale)
                                         account_name_sale = (
                                             tax_line.account_collected_id.code
-                                            + " "
-                                            + tax_line.
-                                            account_collected_id.name
+                                            + " " + \
+                                            tax_line.account_collected_id.name
                                             )
                                     vals = {
                                         'date': line.move_id.date or True,
@@ -207,7 +206,7 @@ class vat_report(report_sxw.rml_parse):
                                             invoice_rec.price_subtotal
                                             or 0.0,
                                             'inclusive':
-                                            tax_amount_cal_sale +
+                                            tax_amount_cal_sale + \
                                             invoice_rec.price_subtotal
                                             or 0.0,
                                             'tax_amount':
@@ -233,9 +232,9 @@ class vat_report(report_sxw.rml_parse):
                                                 tax_line.amount)
                                                 + tax_amount_cal_pur)
                                             account_name_pur = (
-                                             tax_line.account_collected_id.code
-                                             + " " +
-                                             tax_line.account_collected_id.name
+                                                tax_line.account_collected_id.code
+                                                + " " + \
+                                                tax_line.account_collected_id.name
                                              )
                                         vals = {
                                             'date': line.move_id.date,
@@ -246,7 +245,7 @@ class vat_report(report_sxw.rml_parse):
                                             'exclusive':
                                             invoice_rec.price_subtotal,
                                             'inclusive':
-                                            tax_amount_cal_pur
+                                            tax_amount_cal_pur \
                                             + invoice_rec.price_subtotal,
                                             'tax_amount':
                                             tax_amount_cal_pur,
