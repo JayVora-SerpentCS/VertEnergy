@@ -20,7 +20,8 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
+from openerp.exceptions import except_orm
 
 
 class account_invoice_line(models.Model):
@@ -40,5 +41,24 @@ class stock_production_lot(models.Model):
         if 'product_id' in fields and record_id:
             res.update({'product_id': record_id})
         return res
+
+
+class account_invoice(models.Model):
+    _inherit = 'account.invoice'
+
+    @api.multi
+    def action_move_create(self):
+        self.check_limit()
+        return super(account_invoice, self).action_move_create()
+
+    @api.one
+    def check_limit(self):
+        tot_due = self.amount_total + self.partner_id.credit
+        if self.partner_id.credit_limit < tot_due:
+            raise except_orm(
+                _('Credit Limit'),
+                _('Validating invoice exceeds the credit limit of %s') %
+                (self.partner_id.name))
+        return True
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

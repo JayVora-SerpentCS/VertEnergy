@@ -32,7 +32,7 @@
     'data': [
         'data/paperformat_data.xml',
         'views/custom_report.xml',
-        'views/vert_base_view.xml',
+        'views/vert_base_view.xml'
     ],
     'installable': True,
     'auto_install': False,
