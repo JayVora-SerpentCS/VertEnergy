@@ -24,15 +24,14 @@
     'version': '1.0',
     'category': 'Localization/Account Charts',
     'description': """
-        South Africa Accounting: Chart of Account.
-
-        South Africa chart and localization.
-        Odoo allows to manage South Africa Accounting by providing
-        Three Formats of Chart of Account.
-        1) Vert Energy System - Chart of Account
-        2) Vert Energy Africa - Chart of Account
-        3) Vert Amandla - Chart of Account
-
+    South Africa Accounting: Chart of Account.
+    ==========================================
+        South Africa Chart and Localization.
+        Odoo Allows to Manage South Africa Accounting by Providing
+        Three Formats of Chart of Account
+        (1) Vert Energy System - Chart of Account
+        (2) Vert Energy Africa - Chart of Account
+        (3) Vert Amandla - Chart of Account
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
