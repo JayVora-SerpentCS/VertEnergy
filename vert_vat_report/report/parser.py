@@ -68,9 +68,9 @@ class vat_report(report_sxw.rml_parse):
                             tax_amount + self.sum_amount_bank)
                         vals = {
                             'date': rec.date or True,
-                            'account': ((rec.account_id and rec.account_id
+                            'account': (rec.account_id and rec.account_id
                             .code or " ") + " " + (rec.account_id and rec
-                            .account_id.name or " ")),
+                            .account_id.name or " "),
                             'ref': rec.ref or '',
                             'description': rec.tax_id.name or '',
                             'exclusive': rec.amount or 0.0,
