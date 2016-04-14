@@ -116,9 +116,9 @@ class vat_report(report_sxw.rml_parse):
                                             tax_line.amount) +
                                             tax_amount_cal_sale)
                                         account_name_sale = (
-                                            tax_line.account_collected_id.code
-                                            + " " + \
-                                            tax_line.account_collected_id.name
+                                            tax_line.account_collected_id
+                                            .code + " " + tax_line
+                                            .account_collected_id.name
                                             )
                                     vals = {
                                         'date': line.move_id.date or True,
@@ -167,12 +167,12 @@ class vat_report(report_sxw.rml_parse):
                                             + invoice_rec.price_subtotal,
                                         'tax_amount': tax_amount_cal_pur,
                                         'customer': line.partner_id.name
-                                            or ''}
+                                        or ''}
                                     res_list.append(vals)
                             self.sum_amount_pur += line.amount_tax
                 if data['type'] == 'both':
                     if (line.journal_id.type == 'sale' or
-                        line.journal_id.type == 'purchase'):
+                            line.journal_id.type == 'purchase'):
                         if line.amount_tax:
                             if line.journal_id.type == 'sale':
                                 for invoice_rec in line.invoice_line:
@@ -192,10 +192,10 @@ class vat_report(report_sxw.rml_parse):
                                                 tax_line.amount) +
                                                 tax_amount_cal_sale)
                                             account_name_sale = (
-                                             tax_line.account_collected_id.code
-                                             + " " +
-                                             tax_line.account_collected_id.name
-                                             )
+                                                tax_line.account_collected_id
+                                                .code + " " + tax_line
+                                                .account_collected_id.name
+                                                )
                                         vals = {
                                             'date': line.move_id.date or True,
                                             'type': line.journal_id.type or '',
@@ -216,8 +216,9 @@ class vat_report(report_sxw.rml_parse):
                             if line.journal_id.type == 'purchase':
                                 for invoice_rec in line.invoice_line:
                                     if invoice_rec.invoice_line_tax_id:
-                                        self.sum_base_pur = (self.sum_base_pur
-                                            + invoice_rec.price_subtotal)
+                                        self.sum_base_pur = (
+                                            self.sum_base_pur +
+                                            invoice_rec.price_subtotal)
                                         tax_amount_cal_pur = 0.0
                                         account_name_pur = ''
                                         tax_name = ''
@@ -230,9 +231,9 @@ class vat_report(report_sxw.rml_parse):
                                                 tax_line.amount) +
                                                 tax_amount_cal_pur)
                                             account_name_pur = (
-                                                tax_line.account_collected_id.code
-                                                + " " +
-                                                tax_line.account_collected_id.name
+                                                tax_line.account_collected_id
+                                                .code + " " + tax_line
+                                                .account_collected_id.name
                                                 )
                                         vals = {
                                             'date': line.move_id.date,
