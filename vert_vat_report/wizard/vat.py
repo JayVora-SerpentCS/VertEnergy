@@ -48,5 +48,7 @@ class report_vat(models.TransientModel):
         res = {'ids': ids, 'model': 'account.invoice',
                'form': self.read(cr, uid, ids[0], context=context)}
         return self.pool['report'].get_action(
-                            cr, uid, [], 'vert_vat_report.vat_report',
-                            data=res, context=context)
+            cr, uid, [], 'vert_vat_report.vat_report', data=res,
+            context=context)
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

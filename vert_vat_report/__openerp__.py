@@ -30,12 +30,10 @@
     'version': '1.0',
     'category': 'account',
     'depends': ['account', 'report'],
-    'data': [
-             'views/vat_report_view.xml',
+    'data': ['views/vat_report_view.xml',
              'wizard/vat_view.xml',
-             'report_view.xml',
-             ],
+             'report_view.xml'],
     'installable': True,
     'auto_install': False,
 }
-#vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

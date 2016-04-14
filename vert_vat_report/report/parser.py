@@ -35,20 +35,20 @@ class vat_report(report_sxw.rml_parse):
         self.sum_base_bank = 0.0
         self.sum_amount_bank = 0.0
         self.localcontext.update({
-        'get_bank_data': self.get_bank_data,
-        'get_data': self.get_data,
-        'get_sum_base_bank': self._get_sum_base_bank,
-        'get_sum_amount_bank': self._get_sum_amount_bank,
-        'get_sum_inclusive_bank': self._get_sum_inclusive_bank,
-        'get_sum_base_sale': self._get_sum_base_sale,
-        'get_sum_amount_sale': self._get_sum_amount_sale,
-        'get_sum_inclusive_sale': self._get_sum_inclusive_sale,
-        'get_sum_base_pur': self._get_sum_base_pur,
-        'get_sum_inclusive_pur': self._get_sum_inclusive_pur,
-        'get_sum_amount_pur': self._get_sum_amount_pur,
-        'get_net_tax': self._get_net_tax,
-        'get_net_inclusive': self._get_net_inclusive
-        })
+            'get_bank_data': self.get_bank_data,
+            'get_data': self.get_data,
+            'get_sum_base_bank': self._get_sum_base_bank,
+            'get_sum_amount_bank': self._get_sum_amount_bank,
+            'get_sum_inclusive_bank': self._get_sum_inclusive_bank,
+            'get_sum_base_sale': self._get_sum_base_sale,
+            'get_sum_amount_sale': self._get_sum_amount_sale,
+            'get_sum_inclusive_sale': self._get_sum_inclusive_sale,
+            'get_sum_base_pur': self._get_sum_base_pur,
+            'get_sum_inclusive_pur': self._get_sum_inclusive_pur,
+            'get_sum_amount_pur': self._get_sum_amount_pur,
+            'get_net_tax': self._get_net_tax,
+            'get_net_inclusive': self._get_net_inclusive
+            })
 
     @api.v7
     def get_bank_data(self, data):
@@ -56,24 +56,22 @@ class vat_report(report_sxw.rml_parse):
         res_list = []
         bank_statement_obj = self.pool.get('account.bank.statement')
         bank_ids = bank_statement_obj.search(
-                                             self.cr, self.uid,
-                                             [('state', '=', 'confirm')])
+            self.cr, self.uid, [('state', '=', 'confirm')])
         for line in bank_statement_obj.browse(self.cr, self.uid, bank_ids):
-            if data['period_from'] <= line.period_id.date_start and \
-                data['period_to'] >= line.period_id.date_stop:
+            if (data['period_from'] <= line.period_id.date_start and
+                    data['period_to'] >= line.period_id.date_stop):
                 for rec in line.line_ids:
                     if rec.tax_id:
                         tax_amount = rec.amount * rec.tax_id.amount
                         self.sum_base_bank = rec.amount + self.sum_base_bank
-                        self.sum_amount_bank = \
-                            tax_amount + self.sum_amount_bank
+                        self.sum_amount_bank = (
+                            tax_amount + self.sum_amount_bank)
                         vals = {
                                 'date': rec.date or True,
-                                'account': (rec.account_id and \
-                                            rec.account_id.code or " ")
-                                            + " " + (rec.account_id and \
-                                                     rec.account_id.name or \
-                                                     " "),
+                                'account': (rec.account_id and
+                                    rec.account_id.code or " ") + " " +
+                                    (rec.account_id and
+                                    rec.account_id.name or " "),
                                 'ref': rec.ref or '',
                                 'description': rec.tax_id.name or '',
                                 'exclusive': rec.amount or 0.0,
@@ -94,166 +92,170 @@ class vat_report(report_sxw.rml_parse):
         res_list = []
         invoice_obj = self.pool.get('account.invoice')
         invoice_ids = invoice_obj.search(
-                                         self.cr, self.uid,
-                                         [('state', 'in', ('paid', 'open'))])
+            self.cr, self.uid, [('state', 'in', ('paid', 'open'))])
         for line in invoice_obj.browse(self.cr, self.uid, invoice_ids):
-            if data['period_from'] <= line.period_id.date_start and \
-            data['period_to'] >= line.period_id.date_stop:
+            if (data['period_from'] <= line.period_id.date_start and
+                    data['period_to'] >= line.period_id.date_stop):
                 if line.journal_id.type == data['type']:
                     if line.amount_tax:
                         if line.journal_id.type == 'sale':
                             for invoice_rec in line.invoice_line:
                                 if invoice_rec.invoice_line_tax_id:
-                                    self.sum_base_sale = \
-                                    self.sum_base_sale + \
-                                    invoice_rec.price_subtotal
+                                    self.sum_base_sale = (
+                                        self.sum_base_sale +
+                                        invoice_rec.price_subtotal)
                                     tax_amount_cal_sale = 0.0
                                     account_name_sale = ''
                                     tax_name = ''
                                     stx = invoice_rec.invoice_line_tax_id
                                     for tax_line in stx:
-                                        tax_name = tax_line.name + \
-                                        "," + tax_name
-                                        tax_amount_cal_sale =\
-                                        (invoice_rec.price_subtotal * \
-                                         tax_line.amount) + tax_amount_cal_sale
-                                        account_name_sale = \
-                                        tax_line.account_collected_id.code \
-                                        + " " + \
-                                        tax_line.account_collected_id.name
+                                        tax_name = (tax_line.name + "," +
+                                            tax_name)
+                                        tax_amount_cal_sale = ((
+                                            invoice_rec.price_subtotal *
+                                            tax_line.amount) +
+                                            tax_amount_cal_sale)
+                                        account_name_sale = (
+                                            tax_line.account_collected_id.code
+                                            + " " +
+                                            tax_line.account_collected_id.name)
                                     vals = {'date': line.move_id.date or True,
                                             'type': line.journal_id.type or '',
                                             'account': account_name_sale or '',
                                             'reference': line.number or '',
                                             'description': tax_name or '',
-                                            'exclusive': \
-                                            invoice_rec.price_subtotal or 0.0,
-                                            'inclusive': tax_amount_cal_sale \
-                                            + invoice_rec.price_subtotal \
-                                            or 0.0,
-                                            'tax_amount': tax_amount_cal_sale \
-                                            or 0.0,
-                                            'customer': line.partner_id.name \
-                                            or '',
-                                        }
+                                            'exclusive':
+                                                invoice_rec.price_subtotal or
+                                                0.0,
+                                            'inclusive': tax_amount_cal_sale +
+                                                invoice_rec.price_subtotal or
+                                                0.0,
+                                            'tax_amount': tax_amount_cal_sale
+                                                or 0.0,
+                                            'customer': line.partner_id.name
+                                                or '',
+                                            }
                                     res_list.append(vals)
                             self.sum_amount_sale += line.amount_tax
                         if line.journal_id.type == 'purchase':
                             for invoice_rec in line.invoice_line:
                                 if invoice_rec.invoice_line_tax_id:
-                                    self.sum_base_pur = self.sum_base_pur \
-                                    + invoice_rec.price_subtotal
+                                    self.sum_base_pur = (self.sum_base_pur +
+                                        invoice_rec.price_subtotal)
                                     tax_amount_cal_pur = 0.0
                                     account_name_pur = ''
                                     tax_name = ''
                                     ltx = invoice_rec.invoice_line_tax_id
                                     for tax_line in ltx:
-                                        tax_name = tax_line.name + "," + \
-                                        tax_name
-                                        tax_amount_cal_pur = \
-                                        (invoice_rec.price_subtotal * \
-                                         tax_line.amount) + tax_amount_cal_pur
-                                        account_name_pur = \
-                                        tax_line.account_collected_id.code \
-                                        + " " + \
-                                        tax_line.account_collected_id.name
+                                        tax_name = (tax_line.name + "," +
+                                            tax_name)
+                                        tax_amount_cal_pur = ((
+                                            invoice_rec.price_subtotal *
+                                            tax_line.amount) +
+                                            tax_amount_cal_pur)
+                                        account_name_pur = (
+                                            tax_line.account_collected_id.code
+                                            + " " +
+                                            tax_line.account_collected_id.name)
                                     vals = {'date': line.move_id.date,
                                              'type': line.journal_id.type,
                                              'account': account_name_pur,
                                              'reference': line.number or '',
                                              'description': tax_name,
-                                             'exclusive':\
-                                             invoice_rec.price_subtotal,
-                                             'inclusive': tax_amount_cal_pur \
-                                             + invoice_rec.price_subtotal,
+                                             'exclusive':
+                                                 invoice_rec.price_subtotal,
+                                             'inclusive': tax_amount_cal_pur +
+                                                 invoice_rec.price_subtotal,
                                              'tax_amount': tax_amount_cal_pur,
-                                             'customer': line.partner_id.name\
-                                              or '',
+                                             'customer': line.partner_id.name
+                                                 or '',
                                              }
                                     res_list.append(vals)
                             self.sum_amount_pur += line.amount_tax
                 if data['type'] == 'both':
-                    if line.journal_id.type == 'sale' or \
-                    line.journal_id.type == 'purchase':
+                    if (line.journal_id.type == 'sale' or
+                        line.journal_id.type == 'purchase'):
                         if line.amount_tax:
                             if line.journal_id.type == 'sale':
                                 for invoice_rec in line.invoice_line:
                                     if invoice_rec.invoice_line_tax_id:
-                                        self.sum_base_sale = \
-                                        self.sum_base_sale + \
-                                        invoice_rec.price_subtotal
+                                        self.sum_base_sale = (
+                                            self.sum_base_sale +
+                                            invoice_rec.price_subtotal)
                                         tax_amount_cal_sale = 0.0
                                         account_name_sale = ''
                                         tax_name = ''
                                         itx = invoice_rec.invoice_line_tax_id
                                         for tax_line in itx:
-                                            tax_name = tax_line.name \
-                                            + "," + tax_name
-                                            tax_amount_cal_sale = \
-                                            (invoice_rec.price_subtotal * \
-                                             tax_line.amount) + \
-                                             tax_amount_cal_sale
-                                            account_name_sale = \
-                                            tax_line.account_collected_id.code\
-                                            + " " + \
-                                            tax_line.account_collected_id.name
-                                        vals = {'date': line.move_id.date \
-                                                or True,
-                                                'type': line.journal_id.type \
-                                                or '',
-                                                'account': account_name_sale \
-                                                or '',
+                                            tax_name = (tax_line.name + "," +
+                                                tax_name)
+                                            tax_amount_cal_sale = ((
+                                                invoice_rec.price_subtotal *
+                                                tax_line.amount) +
+                                                tax_amount_cal_sale)
+                                            account_name_sale = (
+                                             tax_line.account_collected_id.code
+                                             + " " +
+                                             tax_line.account_collected_id.name
+                                             )
+                                        vals = {'date': line.move_id.date
+                                                    or True,
+                                                'type': line.journal_id.type
+                                                    or '',
+                                                'account': account_name_sale
+                                                    or '',
                                                 'reference': line.number or '',
                                                 'description': tax_name or '',
                                                 'exclusive':
-                                                invoice_rec.price_subtotal\
-                                                or 0.0,
+                                                    invoice_rec.price_subtotal
+                                                    or 0.0,
                                                 'inclusive':
-                                                tax_amount_cal_sale \
-                                                + invoice_rec.price_subtotal\
-                                                or 0.0,
+                                                    tax_amount_cal_sale +
+                                                    invoice_rec.price_subtotal
+                                                    or 0.0,
                                                 'tax_amount':
-                                                tax_amount_cal_sale or 0.0,
+                                                    tax_amount_cal_sale or 0.0,
                                                 'customer':
-                                                line.partner_id.name or '',
+                                                    line.partner_id.name or '',
                                                  }
                                         res_list.append(vals)
                                 self.sum_amount_sale += line.amount_tax
                             if line.journal_id.type == 'purchase':
                                 for invoice_rec in line.invoice_line:
                                     if invoice_rec.invoice_line_tax_id:
-                                        self.sum_base_pur = self.sum_base_pur\
-                                        + invoice_rec.price_subtotal
+                                        self.sum_base_pur = (self.sum_base_pur
+                                            + invoice_rec.price_subtotal)
                                         tax_amount_cal_pur = 0.0
                                         account_name_pur = ''
                                         tax_name = ''
                                         ptx = invoice_rec.invoice_line_tax_id
                                         for tax_line in ptx:
-                                            tax_name = tax_line.name + "," + \
-                                            tax_name
-                                            tax_amount_cal_pur = \
-                                            (invoice_rec.price_subtotal * \
-                                             tax_line.amount) + \
-                                             tax_amount_cal_pur
-                                            account_name_pur = \
-                                            tax_line.account_collected_id.code\
-                                            + " " + \
-                                            tax_line.account_collected_id.name
+                                            tax_name = (tax_line.name + "," +
+                                                tax_name)
+                                            tax_amount_cal_pur = ((
+                                                invoice_rec.price_subtotal *
+                                                tax_line.amount) +
+                                                tax_amount_cal_pur)
+                                            account_name_pur = (
+                                             tax_line.account_collected_id.code
+                                             + " " +
+                                             tax_line.account_collected_id.name
+                                             )
                                         vals = {'date': line.move_id.date,
                                                  'type': line.journal_id.type,
                                                  'account': account_name_pur,
-                                                 'reference': line.number\
-                                                 or '',
+                                                 'reference': line.number
+                                                    or '',
                                                  'description': tax_name,
-                                                 'exclusive':\
-                                                 invoice_rec.price_subtotal,
-                                                 'inclusive':\
-                                                 tax_amount_cal_pur + \
-                                                 invoice_rec.price_subtotal,
-                                                 'tax_amount':\
-                                                 tax_amount_cal_pur,
-                                                 'customer':\
-                                                 line.partner_id.name or '',
+                                                 'exclusive':
+                                                    invoice_rec.price_subtotal,
+                                                 'inclusive':
+                                                    tax_amount_cal_pur +
+                                                    invoice_rec.price_subtotal,
+                                                 'tax_amount':
+                                                    tax_amount_cal_pur,
+                                                 'customer':
+                                                    line.partner_id.name or '',
                                                  }
                                         res_list.append(vals)
                                 self.sum_amount_pur += line.amount_tax
@@ -287,8 +289,8 @@ class vat_report(report_sxw.rml_parse):
         return self.sum_base_pur + self.sum_amount_pur
 
     def _get_net_inclusive(self):
-        return (self.sum_base_sale + self.sum_amount_sale) \
-            + (self.sum_base_pur + self.sum_amount_pur)
+        return ((self.sum_base_sale + self.sum_amount_sale) +
+                (self.sum_base_pur + self.sum_amount_pur))
 
     def _get_net_tax(self):
         return self.sum_amount_sale + self.sum_amount_pur
@@ -299,3 +301,5 @@ class report_vat(models.AbstractModel):
     _inherit = 'report.abstract_report'
     _template = 'vert_vat_report.vat_report'
     _wrapped_report_class = vat_report
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
