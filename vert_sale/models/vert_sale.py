@@ -106,7 +106,8 @@ class sale_order(models.Model):
     def check_limit(self):
         tot_due = self.amount_total + self.partner_id.credit
         if self.partner_id.credit_limit < tot_due:
-            raise except_orm(_('Credit Limit'),
+            raise except_orm(
+                _('Credit Limit'),
                 _('Validating order exceeds the credit limit of %s') %
                 (self.partner_id.name))
             return False
