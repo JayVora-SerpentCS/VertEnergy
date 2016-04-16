@@ -110,7 +110,6 @@ class sale_order(models.Model):
                 _('Credit Limit'),
                 _('Validating order exceeds the credit limit of %s') %
                 (self.partner_id.name))
-                return False
         return True
 
 

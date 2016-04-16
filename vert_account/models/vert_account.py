@@ -59,7 +59,6 @@ class account_invoice(models.Model):
                 _('Credit Limit'),
                 _('Validating invoice exceeds the credit limit of %s') %
                 (self.partner_id.name))
-            return False
         return True
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
