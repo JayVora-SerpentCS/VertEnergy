@@ -40,6 +40,7 @@
         'data/balance_payable_data.xml',
         'views/vert_sale_view.xml',
         'security/ir.model.access.csv',
+        'security/vert_sales_team_multi_company.xml',
         'views/vert_sale_report.xml',
     ],
     'installable': True,

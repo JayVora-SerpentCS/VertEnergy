@@ -142,4 +142,10 @@ class stock_production_lot(models.Model):
             res.update({'product_id': record_id, 'access': True})
         return res
 
+
+class crm_case_section(models.Model):
+    _inherit = "crm.case.section"
+
+    company_id = fields.Many2one("res.company", "Company")
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
