@@ -19,30 +19,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Vert Sales Management',
-    'version': '1.0',
-    'category': 'Sales Management',
-    'description': """
-        This module is used for customization of sales quotations and orders
-     """,
-    'author': 'Serpent Consulting Services Pvt. Ltd.',
-    'website': 'http://www.serpentcs.com',
-    'depends': ['sale_stock', 'vert_base', 'vert_product'],
-    'data': [
-        'data/available_data.xml',
-        'data/shipping_duration_data.xml',
-        'data/quotation_validity_data.xml',
-        'data/rate_exchange_data.xml',
-        'data/forward_exchange_contract_data.xml',
-        'data/sale_deposits_data.xml',
-        'data/balance_payable_data.xml',
-        'views/vert_sale_view.xml',
-        'security/ir.model.access.csv',
-        'views/vert_sale_report.xml',
-    ],
-    'installable': True,
-    'auto_install': False,
-}
+
+from openerp import models, fields
+
+
+class crm_case_section(models.Model):
+    _inherit = "crm.case.section"
+
+    company_id = fields.Many2one("res.company", "Company")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

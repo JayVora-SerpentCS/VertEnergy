@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+        <report id = "stock_move_report"
+            model = "stock.move"
+            report_type = "qweb-pdf"
+            name = "vert_stock.vert_stock_move_product_report"
+            string = "Incoming Products"/>
+    </data>
+</openerp>

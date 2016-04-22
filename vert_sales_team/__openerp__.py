@@ -20,26 +20,19 @@
 #
 ##############################################################################
 {
-    'name': 'Vert Sales Management',
+    'name': 'Vert Sales Team',
     'version': '1.0',
     'category': 'Sales Management',
     'description': """
-        This module is used for customization of sales quotations and orders
+        Using this Module, You can Manage Sales team with Sales and/or CRM.
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
-    'depends': ['sale_stock', 'vert_base', 'vert_product'],
+    'depends': ['sales_team'],
     'data': [
-        'data/available_data.xml',
-        'data/shipping_duration_data.xml',
-        'data/quotation_validity_data.xml',
-        'data/rate_exchange_data.xml',
-        'data/forward_exchange_contract_data.xml',
-        'data/sale_deposits_data.xml',
-        'data/balance_payable_data.xml',
-        'views/vert_sale_view.xml',
-        'security/ir.model.access.csv',
-        'views/vert_sale_report.xml',
+        'data/vert_sales_team_data.xml',
+        'security/vert_sales_team_security.xml',
+        'views/vert_sales_team_view.xml'
     ],
     'installable': True,
     'auto_install': False,

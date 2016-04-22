@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="vert_crm_case_section_sales_team" model="ir.ui.view">
+           <field name="name">vert.crm.case.section.sales.team</field>
+           <field name="model">crm.case.section</field>
+           <field name="inherit_id" ref="sales_team.crm_case_section_view_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//form[@string='Sales Team']/sheet/group/group[@name='left']/field[@name='active']" position="after">
+                   <field name="company_id" widget="selection"/>
+               </xpath>
+           </field>
+       </record>
+    </data>
+</openerp>
