@@ -30,4 +30,5 @@ class res_partner(models.Model):
     supp_acc_ref = fields.Char(string='Supplier Acc. Ref. No.')
     vat_no = fields.Char(string="Vat No.")
     company_reg = fields.Char(string="Company Reg")
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -133,7 +133,8 @@ class vat_report(report_sxw.rml_parse):
                                         invoice_rec.price_subtotal or 0.0,
                                         'tax_amount': tax_amount_cal_sale or
                                         0.0,
-                                        'customer': line.partner_id.name or ''}
+                                        'customer': line.partner_id.name or ''
+                                        }
                                     res_list.append(vals)
                             self.sum_amount_sale += line.amount_tax
                         if line.journal_id.type == 'purchase':
@@ -169,7 +170,8 @@ class vat_report(report_sxw.rml_parse):
                                         'inclusive': tax_amount_cal_pur +
                                         invoice_rec.price_subtotal,
                                         'tax_amount': tax_amount_cal_pur,
-                                        'customer': line.partner_id.name or ''}
+                                        'customer': line.partner_id.name or ''
+                                        }
                                     res_list.append(vals)
                             self.sum_amount_pur += line.amount_tax
                 if data['type'] == 'both':
@@ -212,7 +214,8 @@ class vat_report(report_sxw.rml_parse):
                                             'tax_amount':
                                             tax_amount_cal_sale or 0.0,
                                             'customer':
-                                            line.partner_id.name or ''}
+                                            line.partner_id.name or ''
+                                            }
                                         res_list.append(vals)
                                 self.sum_amount_sale += line.amount_tax
                             if line.journal_id.type == 'purchase':
@@ -251,7 +254,8 @@ class vat_report(report_sxw.rml_parse):
                                             'tax_amount':
                                             tax_amount_cal_pur,
                                             'customer':
-                                            line.partner_id.name or ''}
+                                            line.partner_id.name or ''
+                                            }
                                         res_list.append(vals)
                                 self.sum_amount_pur += line.amount_tax
         return res_list
