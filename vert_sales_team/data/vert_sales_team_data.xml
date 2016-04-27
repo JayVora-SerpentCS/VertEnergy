@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="1">
-        <record id="vert_sale_team1" model="crm.case.section">
+        <record id="vert_sale_team_VEA1" model="crm.case.section">
             <field name="name">Website Sales</field>
             <field name="code">WSL</field>
-            <field name="invoiced_target">50000</field>
-            <field name="invoiced_forecast">35000</field>
             <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VEA"/>
         </record>
-        <record id="vert_sale_team2" model="crm.case.section">
-            <field name="name">Inter-Company Sales</field>
-            <field name="code">ICSL</field>
-            <field name="invoiced_target">45000</field>
-            <field name="invoiced_forecast">30000</field>
+        <record id="vert_sale_team_VEA2" model="crm.case.section">
+            <field name="name">Direct Sales</field>
+            <field name="code">DSLVEA</field>
             <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VEA"/>
+        </record>
+        <record id="vert_sale_team_VEA3" model="crm.case.section">
+            <field name="name">Intercompany (VEA-VES)</field>
+            <field name="code">INTVES</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VEA"/>
+        </record>
+        <record id="vert_sale_team_VEA4" model="crm.case.section">
+            <field name="name">Intercompany (VEA-VA)</field>
+            <field name="code">INTVA</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VEA"/>
+        </record>
+        <record id="vert_sale_team_VEA5" model="crm.case.section">
+            <field name="name">Total Sales (Sales Department)</field>
+            <field name="code">SLD</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VEA"/>
+        </record>
+        <record id="vert_sale_team_VES1" model="crm.case.section">
+            <field name="name">Direct Sales</field>
+            <field name="code">DSLVES</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VES"/>
+        </record>
+        <record id="vert_sale_team_VA1" model="crm.case.section">
+            <field name="name">Direct Sales</field>
+            <field name="code">DSLVA</field>
+            <field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+            <field name="company_id" ref="vert_base.vert_company_VA"/>
         </record>
     </data>
 </openerp>

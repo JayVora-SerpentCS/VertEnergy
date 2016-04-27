@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="vert_company_VEA" model="res.company">
+            <field name="currency_id" ref="base.ZAR"/>
+            <field name="name">Vert Energy Africa (Pty) Ltd</field>
+        </record>
+        <record id="vert_company_VES" model="res.company">
+            <field name="currency_id" ref="base.ZAR"/>
+            <field name="name">Vert Energy System (Pty) Ltd</field>
+        </record>
+        <record id="vert_company_VA" model="res.company">
+            <field name="currency_id" ref="base.ZAR"/>
+            <field name="name">Vert Amandla (Pty) Ltd</field>
+        </record>
+    </data>
+</openerp>

@@ -31,6 +31,7 @@
     'depends': ['report'],
     'data': [
         'data/paperformat_data.xml',
+        'data/vert_company_data.xml',
         'views/custom_report.xml',
         'views/vert_base_view.xml'
     ],
