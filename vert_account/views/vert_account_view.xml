@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id="view_account_invoice_serial_no">
-             <field name="name">account.invoice.form.inherit_serial_no</field>
+        <record model="ir.ui.view" id="vert_customer_view_account_invoice">
+             <field name="name">vert.customer.view.account.invoice</field>
              <field name="model">account.invoice</field>
              <field name="inherit_id" ref="account.invoice_form"/>
              <field name="arch" type="xml">
                  <data>
                     <xpath expr="//page[@string='Invoice Lines']/field[@name='invoice_line']/tree/field[@name='name']" position="after">
                         <field name="serial_no" context="{'active_id': product_id}"/>
+                    </xpath>
+                    <xpath expr="//form/sheet/group/group[2]/field[@name='internal_number']" position="replace">
+                    </xpath>
+                    <xpath expr="//form/sheet/h1" position="replace">
+                        <h1>
+	                        <label string="Draft Invoice" attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','&lt;&gt;','out_invoice')]}"/>
+	                        <label string="Draft Refund" attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','&lt;&gt;','out_refund')]}"/>
+	                        <label string="Pro Forma Invoice" attrs="{'invisible': [('state','not in',('proforma','proforma2'))]}"/>
+	                        <label string="Invoice" attrs="{'invisible': ['|',('state','in',('draft','proforma','proforma2')), ('type','&lt;&gt;','out_invoice')]}"/>
+	                        <label string="Refund" attrs="{'invisible': ['|',('state','in',('draft','proforma','proforma2')), ('type','&lt;&gt;','out_refund')]}"/>
+	                        <field name="internal_number" readonly="1" class="oe_inline"/>
+	                    </h1>
+                    </xpath>
+                 </data>
+             </field>
+         </record>
+         <record model="ir.ui.view" id="vert_supplier_view_account_invoice">
+             <field name="name">vert.supplier.view.account.invoice</field>
+             <field name="model">account.invoice</field>
+             <field name="inherit_id" ref="account.invoice_supplier_form"/>
+             <field name="arch" type="xml">
+                 <data>
+                    <xpath expr="//form/sheet/group/group[2]/field[@name='internal_number']" position="replace">
+                    </xpath>
+                    <xpath expr="//form/sheet/div[@class='oe_title']/h1" position="replace">
+                        <h1>
+                            <label string="Draft Invoice" attrs="{'invisible': ['|',('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_invoice')]}"/>
+                            <label string="Draft Refund" attrs="{'invisible': ['|',('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <label string="Invoice" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_invoice')]}"/>
+                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <field name="internal_number" class="oe_inline" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                        </h1>
                     </xpath>
                  </data>
              </field>
