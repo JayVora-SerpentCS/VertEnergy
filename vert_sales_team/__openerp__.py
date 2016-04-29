@@ -24,7 +24,7 @@
     'version': '1.0',
     'category': 'Sales Management',
     'description': """
-        Using this Module, You can Manage Sales team with Sales and/or CRM.
+        This application help to manage Sales Team with CRM and Sales
      """,
     'author': 'Serpent Consulting Services Pvt. Ltd.',
     'website': 'http://www.serpentcs.com',
