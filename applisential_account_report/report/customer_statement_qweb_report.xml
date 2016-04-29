@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="customer_statement_qweb_report">
+            <t t-foreach="get_partner_rec(data['form'])" t-as="part">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <div><b>Customer Details </b><br/>
+                            <span t-field="part.name"/><br/>
+                            <span t-field="part.street"/><br/>
+                            <span t-field="part.street2"/><br/>
+                            <span t-field="part.city"/><br/>
+                            <span t-field="part.state_id and part.state_id.name"/> - <span t-field="part.zip"/><br/>
+                            <span t-field="part.country_id and part.country_id.name"/>
+                        </div><br/>
+                        <h4 style="text-align:left;">STATEMENT OF ACCOUNT</h4>
+                        <table width="100%" style="border:1px solid black">
+                            <tr>
+                                <th style="text-align: center; border:1px solid black">
+                                    Acc.Ref
+                                </th>
+                                <th style="text-align: center; border:1px solid black">
+                                    Statement Date
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border:1px solid grey"><span t-esc="part.property_account_receivable.code"/></td>
+                                <td style="text-align: center; border:1px solid grey"><span t-esc="formatLang(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),date_time=True)"/></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <t t-if="data.get('form').get('initial_balance')==True">
+                            <table width="100%">
+                                <tr>
+                                    <th></th>
+                                    <th style="text-align:center">Debit</th>
+                                    <th style="text-align:center">Credit</th>
+                                    <th style="text-align:center">Balance</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Initial Balance
+                                    </td>
+                                    <td style="text-align:center"><span t-esc="get_intial_balance(part)[0][0]"/></td>
+                                    <td style="text-align:center"><span t-esc="get_intial_balance(part)[0][1]"/></td>
+                                    <td style="text-align:center"><span t-esc="get_intial_balance(part)[0][2]"/></td>
+                                </tr>
+                            </table>
+                        </t><br/>
+                        <table style="border:1px solid black;" class="table table-responsive">
+                            <tr>
+                                <th style="text-align: center; border:1px solid black;">Date</th>
+                                <th style="text-align: center; border:1px solid black;">Invoice</th>
+                                <th style="text-align: center; border:1px solid black;">Origin</th>
+                                <th style="text-align: center; border:1px solid black;">Date Due Payment</th>
+                                <th style="text-align: center; border:1px solid black;">Amount Due</th>
+                                <th style="text-align: center; border:1px solid black;">Payment Ref</th>
+                                <th style="text-align: center; border:1px solid black;">Date Paid</th>
+                                <th style="text-align: center; border:1px solid black;">Amount Paid</th>
+                            </tr>
+                            <t t-foreach="lines(part)" t-as="line">
+                             <tr>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="formatLang(line.get('date'), date=True)"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="line.get('move_name')"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="get_inv(line.get('id'))"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="formatLang(line.get('date_maturity'),date=True)"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="line.get('due_amount')"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="line.get('pay_ref')"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="line.get('paid_date')"/></td>
+                                 <td style="text-align: center; border:1px solid grey;"><span t-esc="line.get('paid_amt')"/></td>
+                             </tr>
+                            </t>
+                        </table><br/>
+                        <t t-foreach="date_part()" t-as="dt">
+                            <table style="border:1px solid black;" width="100%">
+                                <tr>
+                                    <th style="text-align: center; border:1px solid black;">Over 90 Days</th>
+                                    <th style="text-align: center; border:1px solid black;">90 Days</th>
+                                    <th style="text-align: center; border:1px solid black;">60 Days</th>
+                                    <th style="text-align: center; border:1px solid black;">30 Days</th>
+                                    <th style="text-align: center; border:1px solid black;">Amount Due</th>
+                                </tr>
+                                    <td style="text-align: center; border:1px solid grey;"><span t-esc="get_move_data(dt.get('1').get('start'),dt.get('1').get('stop'))"/></td>
+                                    <td style="text-align: center; border:1px solid grey;"><span t-esc="get_move_data(dt.get('2').get('start'),dt.get('2').get('stop'))"/></td>
+                                    <td style="text-align: center; border:1px solid grey;"><span t-esc="get_move_data(dt.get('3').get('start'),dt.get('3').get('stop'))"/></td>
+                                    <td style="text-align: center; border:1px solid grey;"><span t-esc="get_move_data(dt.get('4').get('start'),dt.get('4').get('stop'))"/></td>
+                                    <td style="text-align: center; border:1px solid grey;"><span t-esc="get_amount_due(part)['amount_due']"/><span t-esc="company.currency_id.name"/></td>
+                                <tr>
+                                </tr>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

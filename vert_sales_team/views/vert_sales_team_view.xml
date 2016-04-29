@@ -11,5 +11,15 @@
                </xpath>
            </field>
        </record>
+       <record id="vert_crm_case_section_sales_team_list_view" model="ir.ui.view">
+           <field name="name">vert.crm.case.section.sales.team.view</field>
+           <field name="model">crm.case.section</field>
+           <field name="inherit_id" ref="sales_team.crm_case_section_view_tree"/>
+           <field name="arch" type="xml">
+               <xpath expr="//tree[@string='Sales Team']/field[@name='user_id']" position="after">
+                   <field name="company_id"/>
+               </xpath>
+           </field>
+       </record>
     </data>
 </openerp>
