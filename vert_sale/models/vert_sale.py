@@ -142,4 +142,5 @@ class stock_production_lot(models.Model):
             res.update({'product_id': record_id, 'access': True})
         return res
 
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

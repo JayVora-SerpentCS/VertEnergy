@@ -2,8 +2,7 @@
 <openerp>
     <data>
         <template id="report_invoice_reference" inherit_id="account.report_invoice_document">
-            <xpath expr="//div[@class='page']/h2"
-                position="replace">
+            <xpath expr="//div[@class='page']/h2" position="replace">
                 <h2>
                     <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Tax Invoice</span>
                     <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>

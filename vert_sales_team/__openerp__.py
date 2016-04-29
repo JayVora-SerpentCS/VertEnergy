@@ -19,7 +19,23 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-from . import vert_account
+{
+    'name': 'Vert Sales Team',
+    'version': '1.0',
+    'category': 'Sales Management',
+    'description': """
+        This application help to manage Sales Team with CRM and Sales
+     """,
+    'author': 'Serpent Consulting Services Pvt. Ltd.',
+    'website': 'http://www.serpentcs.com',
+    'depends': ['sales_team'],
+    'data': [
+        'data/vert_sales_team_data.xml',
+        'security/vert_sales_team_security.xml',
+        'views/vert_sales_team_view.xml'
+    ],
+    'installable': True,
+    'auto_install': False,
+}
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

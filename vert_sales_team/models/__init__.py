@@ -20,6 +20,6 @@
 #
 ##############################################################################
 
-from . import vert_account
+from . import vert_sales_team
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

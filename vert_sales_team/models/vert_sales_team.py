@@ -20,6 +20,12 @@
 #
 ##############################################################################
 
-from . import vert_account
+from openerp import models, fields
+
+
+class crm_case_section(models.Model):
+    _inherit = "crm.case.section"
+
+    company_id = fields.Many2one("res.company", "Company")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

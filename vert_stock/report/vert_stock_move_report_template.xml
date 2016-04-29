@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="vert_stock_move_product_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="data">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="border:1px solid black;" rowspan="2">Date</th>
+                                        <th style="border:1px solid black;" rowspan="2">Source</th>
+                                        <th style="border:1px solid black;" rowspan="2">Supplier</th>
+                                        <th style="border:1px solid black;" rowspan="2">Product</th>
+                                        <th style="border:1px solid black;" rowspan="2">Total Quantity Ordered</th>
+                                        <th style="border:1px solid black;" rowspan="2">Total Quantity Received</th>
+                                        <th style="border:1px solid black;" colspan="2">Total Quantity Pending</th>
+                                        <th style="border:1px solid black;" rowspan="2">GIT Vessel</th>
+                                        <th style="border:1px solid black;" rowspan="2">Status</th>
+                                        <th style="border:1px solid black;" rowspan="2">Date Received</th>
+                                        <th style="border:1px solid black;" rowspan="2">GIT Container</th>
+                                        <th style="border:1px solid black;" rowspan="2">GIT ETA</th>
+                                        <th style="border:1px solid black;" rowspan="2">GIT QTY</th>
+                                        <th style="border:1px solid black;" rowspan="2">1.Client</th>
+                                        <th style="border:1px solid black;" rowspan="2">1.QTY</th>
+                                        <th style="border:1px solid black;" rowspan="2">1.SO Ref</th>
+                                        <th style="border:1px solid black;" rowspan="2">Total Outgoing Qty</th>
+                                        <th style="border:1px solid black;" rowspan="2">Unallocated Available</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;">Total Quantity Goods In Transit</th>
+                                        <th style="border:1px solid black;">Total Quantity to Be Produced</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border:1px solid black;"><span t-field="data.date"/></td>
+                                        <td style="border:1px solid black;"><span t-field="data.origin"/></td>
+                                        <td style="border:1px solid black;"><span t-field="data.picking_id.partner_id.name"/></td>
+                                        <td style="border:1px solid black;"><span t-field="data.product_id"/></td>
+                                        <td style="border:1px solid black;"><span t-field="data.purchase_line_id.product_qty"/></td>
+                                        <td style="border:1px solid black;" class="success"><span t-esc="get_received_quantity(data.purchase_line_id)"/></td>
+                                        <td style="border:1px solid black;" class="warning"><span t-esc="get_available_quantity(data.purchase_line_id)"/></td>
+                                        <td style="border:1px solid black;" class="danger">0.0</td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"><span t-field="data.state"/></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                        <td style="border:1px solid black;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
