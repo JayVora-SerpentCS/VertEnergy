@@ -101,53 +101,23 @@
             </xpath>
             <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
                 <div class="row mt32 mb32" style="font-size:85%">
-                <div t-if="o.name" class="col-xs-3">
-                    <strong>Our Order Reference:</strong>
-                    <p t-field="o.name"/>
+                    <div t-if="o.name" class="col-xs-3">
+                        <strong>Our Order Reference:</strong>
+                        <p t-field="o.name"/>
+                    </div>
+                    <div t-if="o.partner_ref" class="col-xs-3">
+                        <strong>Your Order Reference</strong>
+                        <p t-field="o.partner_ref"/>
+                    </div>
+                    <div t-if="o.date_order" class="col-xs-3">
+                        <strong>Order Date:</strong>
+                        <p t-field="o.date_order"/>
+                    </div>
+                    <div t-if="o.validator" class="col-xs-3">
+                        <strong>Validated By:</strong>
+                        <p t-field="o.validator"/>
+                    </div>
                 </div>
-                <div t-if="o.partner_ref" class="col-xs-3">
-                    <strong>Your Order Reference</strong>
-                    <p t-field="o.partner_ref"/>
-                </div>
-                <div t-if="o.date_order" class="col-xs-3">
-                    <strong>Order Date:</strong>
-                    <p t-field="o.date_order"/>
-                </div>
-                <div t-if="o.validator" class="col-xs-3">
-                    <strong>Validated By:</strong>
-                    <p t-field="o.validator"/>
-                </div>
-            </div>
-            </xpath>
-            <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
-                <table class="table table-condensed table-bordered">
-                <thead>
-                    <tr>
-                        <th rowspan="2">Date</th>
-                        <th rowspan="2">Source</th>
-                        <th rowspan="2">Supplier</th>
-                        <th rowspan="2">Product</th>
-                        <th rowspan="2">Total Quantity Ordered</th>
-                        <th rowspan="2">Total Quantity Received</th>
-                        <th colspan="2">Total Quantity Pending</th>
-                        <th rowspan="2">GIT Vessel</th>
-                        <th rowspan="2">Status</th>
-                        <th rowspan="2">Date Received</th>
-                        <th rowspan="2">GIT Container</th>
-                        <th rowspan="2">GIT ETA</th>
-                        <th rowspan="2">GIT QTY</th>
-                        <th rowspan="2">1.Client</th>
-                        <th rowspan="2">1.QTY</th>
-                        <th rowspan="2">1.SO Ref</th>
-                        <th rowspan="2">Total Outgoing Qty</th>
-                        <th rowspan="2">Unallocated Available</th>
-                    </tr>
-                    <tr>
-                        <th>Total Quantity Goods In Transit</th>
-                        <th>Total Quantity to Be Produced</th>
-                    </tr>
-                </thead>
-                </table>
             </xpath>
         </template>
     </data>
