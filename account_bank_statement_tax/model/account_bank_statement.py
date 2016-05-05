@@ -48,10 +48,10 @@ class AccountBankStatement(models.Model):
         tax_obj = self.pool.get('account.tax')
 
         fiscal_position = (
-            st_line.partner_id.property_account_position
-            if st_line.partner_id and
-                st_line.partner_id.property_account_position
-            else False)
+                           st_line.partner_id.property_account_position
+                           if st_line.partner_id and
+                           st_line.partner_id.property_account_position
+                           else False)
         tax_ids = self.pool.get('account.fiscal.position').map_tax(
             cr, uid, fiscal_position, [st_line.tax_id])
         taxes = tax_obj.browse(cr, uid, tax_ids, context=context)
@@ -68,10 +68,10 @@ class AccountBankStatement(models.Model):
                     # As the tax is inclusive, we need to correct the
                     # amount on the original move line
                     amount = computed_taxes.get('total', 0.0)
-                    update_move_line['credit'] = ((amount < 0)
-                                                  and -amount)or 0.0
-                    update_move_line['debit'] = ((amount > 0)
-                                                 and amount) or 0.0
+                    update_move_line['credit'] = ((amount < 0)and
+                                                  -amount)or 0.0
+                    update_move_line['debit'] = ((amount > 0)and
+                                                 amount) or 0.0
 
                 move_lines.append({
                     'move_id': defaults['move_id'],
@@ -101,14 +101,11 @@ class AccountBankStatement(models.Model):
         the tax move lines.
         """
         res = super(AccountBankStatement, self)._prepare_bank_move_line(
-                                                    cr, uid, st_line, move_id,
-                                                    amount,
-                                                    company_currency_id,
-                                                    context=context)
+                cr, uid, st_line, move_id, amount, company_currency_id,
+                context=context)
         if st_line.tax_id:
             tax_move_lines, counterpart_update_vals = self.get_tax_move_lines(
-                                                        cr, uid, st_line, res,
-                                                        context=context)
+                                        cr, uid, st_line, res, context=context)
             res.update(counterpart_update_vals)
             for tax_move_line in tax_move_lines:
                 self.pool.get('account.move.line').create(cr, uid,

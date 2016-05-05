@@ -27,5 +27,5 @@ class AccountBankStatementLine(models.Model):
 
     tax_id = fields.Many2one('account.tax', string='Tax',
                              domain=[('price_include', '=', True)],
-                             help='Apply an (inclusive) tax from'\
+                             help='Apply an (inclusive) tax from'
                              'the bank statement line')
