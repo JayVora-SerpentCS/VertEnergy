@@ -3,7 +3,8 @@
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
-#    Copyright (C) 2012-2012 ChriCar Beteiligungs- und Beratungs- GmbH (<http://www.camptocamp.at>)
+#    Copyright (C) 2012-2012 ChriCar Beteiligungs- und Beratungs-
+#    GmbH (<http://www.camptocamp.at>)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,14 +23,12 @@
 
 # FIXME remove logger lines or change to debug
 
-from openerp.osv import fields, osv
+from openerp import models, fields
 
 
-class account_journal(osv.osv):
+class account_journal(models.Model):
     _inherit = 'account.journal'
 
-    _columns = {
-       'reopen_posted':  fields.boolean('Allow Update of Posted Entries', help="Allows to reopen posted invoices, sets the move state to unposted"),
-        }
-
-account_journal()
+    reopen_posted = fields.Boolean('Allow Update of Posted Entries',
+                                   help='Allows to reopen posted invoices '
+                                   'sets the move state to unposted')

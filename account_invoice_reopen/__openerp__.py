@@ -19,33 +19,32 @@
 #
 ##############################################################################
 
-{ 'sequence': 500,
-
-"name" : "Invoice Reopen",
-"version" : "1.1",
-"author" : "Camptocamp SA",
-"category": 'Accounting & Finance',
-'complexity': "normal",
-"description": """
-Allows reopeing of unpaid invoices.
-=====================================
-
-This module allows to reopen (set to draft) unpaid invoices.
-To comply with good accounting practice the existing posted move associated
-with the invoice will be renamed (add [YYMMDD HHMISS]) and a new move (same name ending with *)
-will be created with reversed debit/credit.
-The renamed and new lines are reconciled.
-If the invoice is printed AND stored as attachment the attachment will be renamed too.
-This allows to change all content of the invoice if necessary.
-
-""",
-'website': 'http://www.camptocamp.com',
-"depends" : ["account"],
-'init_xml': [],
-'data': ['account_reopen_view.xml','account_invoice_workflow.xml' ],
-'demo_xml': [],
-'installable': True,
-'auto_install': False,
+{
+    'sequence': 500,
+    'name': 'Invoice Reopen',
+    'version': '1.1',
+    'author': 'Camptocamp SA',
+    'category': 'Accounting & Finance',
+    'complexity': 'normal',
+    'description': """
+        Allows reopeing of unpaid invoices.
+        =====================================
+        This module allows to reopen (set to draft) unpaid invoices.
+        To comply with good accounting practice the existing posted move
+        associated with the invoice will be renamed (add [YYMMDD HHMISS])
+        and a new move (same name ending with *) will be created with
+        reversed debit/credit. The renamed and new lines are reconciled.
+        If the invoice is printed AND stored as attachment the attachment
+        will be renamed too.This allows to change all content of the invoice
+        if necessary.
+    """,
+    'website': 'http://www.camptocamp.com',
+    "depends": ["account"],
+    'init_xml': [],
+    'data': ['account_reopen_view.xml', 'account_invoice_workflow.xml'],
+    'demo_xml': [],
+    'installable': True,
+    'auto_install': False,
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
