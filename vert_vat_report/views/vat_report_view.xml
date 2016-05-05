@@ -156,38 +156,38 @@
 
                     <!--for Bank data -->
                     <!-- This part is comment because account_bank_statement_tax module is need to migrated in v8 -->
-                        <!-- <t t-if="data['form']['type'] == 'both'">
+                        <t t-if="data['form']['type'] == 'both'">
                         <div>
-                        <table width="100%" style="border-bottom: 1px solid;">
-                            <tr style="border-bottom: 1px solid;">
-                                <th width="11%" style="text-align: left;border-bottom: 1px solid">Date</th>
-                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Type</th>
-                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Account</th>
-                                <th width="10%" style="text-align: left;border-bottom: 1px solid">Reference</th>
-                                <th width="25%" style="text-align: left;border-bottom: 1px solid">Description</th>
-                                <th width="10%" style="text-align: right;border-bottom: 1px solid">Exclusive</th>
-                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Inclusive</th>
-                                <th width="12%" style="text-align: right;border-bottom: 1px solid">Tax Amount</th>
-                            </tr>
+                            <table width="100%" style="border-bottom: 1px solid;">
+                                <tr style="border-bottom: 1px solid;">
+                                    <th width="11%" style="text-align: left;border-bottom: 1px solid">Date</th>
+                                    <th width="10%" style="text-align: left;border-bottom: 1px solid">Type</th>
+                                    <th width="10%" style="text-align: left;border-bottom: 1px solid">Account</th>
+                                    <th width="10%" style="text-align: left;border-bottom: 1px solid">Reference</th>
+                                    <th width="25%" style="text-align: left;border-bottom: 1px solid">Description</th>
+                                    <th width="10%" style="text-align: right;border-bottom: 1px solid">Exclusive</th>
+                                    <th width="12%" style="text-align: right;border-bottom: 1px solid">Inclusive</th>
+                                    <th width="12%" style="text-align: right;border-bottom: 1px solid">Tax Amount</th>
+                                </tr>
                                 <tr>
                                     <td colspan="8" style="padding-bottom:10px;">Tax Type : 1 - Vat Standard rated -
                                         Output Tax
                                     </td>
                                 </tr>
                                 <t t-foreach="get_bank_data(data['form'])" t-as="a1">
-                                         <tr>
-                                            <td width="11%"><span t-esc="a1.get('date')" /></td>
-                                            <td width="10%">Bank</td>
-                                            <td width="10%"><span t-esc="a1.get('account')" /></td>
-                                            <td width="10%"><span t-esc="a1.get('ref')" /></td>
-                                            <td width="25%"><span t-esc="a1.get('description')" /></td>
-                                            <td width="10%" style="text-align:right;"><span t-esc="a1.get('exclusive')" /></td>
-                                            <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('inclusive'))" /></td>
-                                            <td width="12%" style="text-align:right;"><span t-esc="a1.get('tax')" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="8">Customer Name: <span t-esc="a1.get('customer')" /></td>
-                                        </tr>
+                                    <tr>
+                                        <td width="11%"><span t-esc="a1.get('date')" /></td>
+                                        <td width="10%">Bank</td>
+                                        <td width="10%"><span t-esc="a1.get('account')" /></td>
+                                        <td width="10%"><span t-esc="a1.get('ref')" /></td>
+                                        <td width="25%"><span t-esc="a1.get('description')" /></td>
+                                        <td width="10%" style="text-align:right;"><span t-esc="a1.get('exclusive')" /></td>
+                                        <td width="12%" style="text-align:right;"><span t-esc="formatLang(a1.get('inclusive'))" /></td>
+                                        <td width="12%" style="text-align:right;"><span t-esc="a1.get('tax')" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="8">Customer Name: <span t-esc="a1.get('customer')" /></td>
+                                    </tr>
                                 </t>
                                 <tr>
                                     <td colspan="5" style="border-top:1px solid;width:760px;">Total for Tax Type: 1 - Vat Standard
@@ -207,7 +207,7 @@
                             </table>
                         </div>
                         <p style="page-break-after: always;"></p>
-                        </t> -->
+                        </t>
                         
                         <table width="100%">
                             <tr>
